@@ -91,38 +91,10 @@ export default function FooterSection({
   className,
 }: FooterProps) {
   return (
-    <footer className={cn("bg-background w-full px-4", className)}>
+    <footer className={cn("bg-background w-full px-4 py-10", className)}>
       <div className="max-w-container mx-auto">
-        <Footer className="border-border dark:border-border/15 border-t pt-8">
-          <FooterContent className="sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-            
-            {/* Logo + Socials */}
-            <FooterColumn className="col-span-2 md:col-span-1 flex flex-col items-start gap-6 border-b pb-8 md:border-b-0">
-              <div className="flex items-center gap-2">
-                {logo}
-                <h3 className="text-xl font-bold">{name}</h3>
-              </div>
-
-              <div className="flex flex-wrap gap-2 sm:gap-3">
-                {socials.map((social, index) => (
-                  <Link
-                    key={index}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-foreground transition"
-                  >
-                    <span className="sr-only">{social.label}</span>
-                    {React.cloneElement(
-                      social.icon as React.ReactElement<React.SVGProps<SVGSVGElement>>,
-                      { className: "h-5 w-5 sm:h-6 sm:w-6" } // responsive size
-                    )}
-                  </Link>
-                ))}
-              </div>
-            </FooterColumn>
-
-            {/* Footer Links */}
+        <Footer className="pt-8">
+          <FooterContent className="grid grid-cols-2 sm:grid-cols-4 gap-8">
             {columns.map((column, index) => (
               <FooterColumn key={index}>
                 <h3 className="text-md pt-1 font-semibold">{column.title}</h3>
@@ -130,18 +102,41 @@ export default function FooterSection({
                   <a
                     key={linkIndex}
                     href={link.href}
-                    className="text-muted-foreground text-sm hover:text-foreground transition"
+                    className="text-muted-foreground text-sm hover:text-foreground transition block mt-2"
                   >
                     {link.text}
                   </a>
                 ))}
               </FooterColumn>
             ))}
-
           </FooterContent>
 
-          <FooterBottom className="border-0">
-            <div className="text-muted-foreground text-sm">{copyright}</div>
+          {/* Bottom: Logo + Socials + Copyright */}
+          <FooterBottom className="mt-10 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="flex items-center gap-2">
+              {logo}
+              <h3 className="text-xl font-bold">{name}</h3>
+            </div>
+
+            <div className="flex gap-3 mt-2 md:mt-0">
+              {socials.map((social, index) => (
+                <Link
+                  key={index}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition"
+                >
+                  <span className="sr-only">{social.label}</span>
+                  {React.cloneElement(
+                    social.icon as React.ReactElement<React.SVGProps<SVGSVGElement>>,
+                    { className: "h-5 w-5 sm:h-6 sm:w-6" }
+                  )}
+                </Link>
+              ))}
+            </div>
+
+            <div className="text-sm text-muted mt-2 md:mt-0">{copyright}</div>
           </FooterBottom>
         </Footer>
       </div>
