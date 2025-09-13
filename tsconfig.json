@@ -29,11 +29,15 @@
     "target": "ES2017"
   },
   "include": [
-    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
-, "components/ui/sidebar.tsx.bak", "components/sections/pricing/3-cols-subscription.tsx.bak", "components/sections/pricing/2-cols-subscription.tsx.bak"  ],
+    ".next/types/**/*.ts",
+    "components/sections/pricing/2-cols-subscription.tsx.bak",
+    "components/sections/pricing/3-cols-subscription.tsx.bak",
+    "components/ui/sidebar.tsx.bak",
+    "next-env.d.ts",
+    "out/types/**/*.ts"
+  ],
   "exclude": [
     "node_modules"
   ]
