@@ -21,7 +21,7 @@ export default function Pricing({
       price: 0,
       priceNote: "Free and open-source forever.",
       cta: {
-        variant: "glow",
+        variant: "default",
         label: "Get started for free",
         href: "/docs/getting-started/introduction",
       },

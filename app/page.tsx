@@ -348,8 +348,8 @@ import { Play } from "next/font/google";
                 <MockupFrame size="small">
                   <Mockup type="responsive">
                     <Screenshot
-                      srcLight="/img/Node.png"
-                      srcDark="/img/Node.png"
+                      srcLight="/img/node.png"
+                      srcDark="/img/node.png"
                       alt="TodoPluto organization screenshot"
                       width={1248}
                       height={765}

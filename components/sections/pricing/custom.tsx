@@ -21,7 +21,7 @@ export default function Pricing({
       priceNote: "",
       features: [],
       cta: { variant: "outline", label: "Get started", href: "/docs/getting-started/introduction" },
-      variant: "default",
+      variant: "glow",
       className: "",
     },
     {
