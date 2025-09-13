@@ -1,5 +1,4 @@
 import * as React from "react";
-import { ReactNode } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
@@ -23,13 +22,13 @@ interface FooterColumnProps {
 }
 
 interface SocialLink {
-  icon: ReactNode;
+  icon: React.ElementType<React.SVGProps<SVGSVGElement>>;
   href: string;
   label: string;
 }
 
 interface FooterProps {
-  logo?: ReactNode;
+  logo?: React.ReactNode;
   name?: string;
   columns?: FooterColumnProps[];
   copyright?: string;
@@ -119,21 +118,21 @@ export default function FooterSection({
             </div>
 
             <div className="flex gap-3 mt-2 md:mt-0">
-              {socials.map((social, index) => (
-                <Link
-                  key={index}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground transition"
-                >
-                  <span className="sr-only">{social.label}</span>
-                  {React.cloneElement(
-                    social.icon as React.ReactElement<React.SVGProps<SVGSVGElement>>,
-                    { className: "h-5 w-5 sm:h-6 sm:w-6" }
-                  )}
-                </Link>
-              ))}
+              {socials.map((social, index) => {
+                const Icon = social.icon;
+                return (
+                  <Link
+                    key={index}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-foreground transition"
+                  >
+                    <span className="sr-only">{social.label}</span>
+                    <Icon className="h-6 w-auto sm:h-6 sm:w-auto" />
+                  </Link>
+                );
+              })}
             </div>
 
             <div className="text-sm text-muted mt-2 md:mt-0">{copyright}</div>
