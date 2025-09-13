@@ -1,0 +1,155 @@
+.terminal {
+    font-family: "Source Code Pro", Monaco, "Courier New", monospace;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: #fff;
+    margin: 0 auto;
+  }
+  
+  .terminal__task-bar {
+    height: 2rem;
+    padding-left: 0.5rem;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    background-color: #efefef;
+  }
+  
+  .terminal__window {
+    height: 17.5rem;
+    padding: 1.5rem;
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    background-color: #000;
+  }
+  
+  .terminal__window--highlight {
+    color: #51e05d;
+  }
+  
+  .terminal__circle {
+    display: inline-block;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+  }
+  
+  .terminal__circle--red {
+    background-color: #fb574e;
+  }
+  .terminal__circle--yellow {
+    background-color: #fbbd2e;
+  }
+  .terminal__circle--green {
+    background-color: #51e05d;
+  }
+  
+  .terminal__prompt--checkout,
+  .terminal__prompt--show-contact,
+  .terminal__prompt--mail {
+    opacity: 0;
+  }
+  
+  /* Sequence animations */
+  .terminal__prompt--checkout {
+    animation: show-checkout 16s infinite;
+  }
+  .terminal__prompt--show-contact {
+    animation: show-show-contact 16s infinite;
+  }
+  .terminal__prompt--mail {
+    animation: show-mail 16s infinite;
+  }
+  
+  .terminal__prompt--typing {
+    position: relative;
+  }
+  .terminal__prompt--typing .cover {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-block;
+    height: 100%;
+    background: #000;
+    border-left: 1px solid #fff;
+  }
+  .cover--gimme-dev {
+    animation: typing-gimme-dev 16s steps(19, end) infinite;
+  }
+  .cover--show-contact {
+    animation: typing-show-contact 16s steps(29, end) infinite;
+  }
+  
+  /* Keyframes */
+  @keyframes typing-gimme-dev {
+    0% {
+      width: 100%;
+      opacity: 1;
+    }
+    12% {
+      width: 0;
+    }
+    15% {
+      opacity: 1;
+    }
+    16% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes typing-show-contact {
+    0%,
+    35% {
+      width: 100%;
+    }
+    47%,
+    100% {
+      width: 0;
+    }
+    48% {
+      opacity: 1;
+    }
+    49% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes show-checkout {
+    0%,
+    20% {
+      opacity: 0;
+    }
+    25%,
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes show-mail {
+    0%,
+    55% {
+      opacity: 0;
+    }
+    60%,
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes show-show-contact {
+    0%,
+    28% {
+      opacity: 0;
+    }
+    32%,
+    100% {
+      opacity: 1;
+    }
+  }
+  

@@ -1,0 +1,76 @@
+:root {
+  --brand-ember: oklch(66.5% 0.1804 47.04); /* orange-300 */
+  --brand-ember-foreground: oklch(75.77% 0.159 55.91); /* orange-400 */
+  --background-ember: oklch(97.65% 0.001 17.18);
+
+  --brand-fire: oklch(57.41% 0.2344 29.12); /* red-500 */
+  --brand-fire-foreground: oklch(70.89% 0.1571 45.44); /* custom orange */
+  --background-fire: oklch(97.5% 0.0033 17.21);
+
+  --brand-ultraviolet: oklch(44.22% 0.2702 276.38); /* violet-400 */
+  --brand-ultraviolet-foreground: oklch(51.03% 0.2303 276.94); /* indigo-600 */
+  --background-ultraviolet: oklch(97.53% 0.0045 254.98);
+
+  --brand-ice: oklch(57.79% 0.1928 257.87); /* slate-200 */
+  --brand-ice-foreground: oklch(75.37% 0.1389 232.59); /* sky-400 */
+  --background-ice: oklch(97.53% 0.0045 254.98);
+
+  --brand-titanium: oklch(52.97% 0.017 285.8); /* zinc-300 */
+  --brand-titanium-foreground: oklch(63.88% 0.0126 286.04); /* zinc-500 */
+  --background-titanium: oklch(97.63% 0.001 286.38);
+
+  --brand-emerald: oklch(65.31% 0.1436 161.43); /* emerald-600 */
+  --brand-emerald-foreground: oklch(80.97% 0.1579 162.13); /* emerald-300 */
+  --background-emerald: oklch(97.53% 0.0045 254.98);
+
+  --brand-holo: oklch(55.78% 0.2524 302.36); /* purple-600 */
+  --brand-holo-foreground: oklch(78.17% 0.1653 68.67); /* amber-300 */
+  --background-holo: oklch(97.78% 0.0021 67.8);
+
+  --brand-electro: oklch(56.56% 0.212102 265.2452); /* blue-700 */
+  --brand-electro-foreground: oklch(82.72% 0.1426 178.93); /* teal-300 */
+  --background-electro: oklch(98.07% 0.0055 185.3);
+
+  --radius-small: 0.25rem;
+  --radius-default: 0.5rem;
+  --radius-large: 1rem;
+  --radius-xl: 2rem;
+}
+
+.dark {
+  --brand-ember: oklch(83.6% 0.1177 66.87); /* orange-300 */
+  --brand-ember-foreground: oklch(75.77% 0.159 55.91); /* orange-400 */
+  --background-ember: oklch(14.05% 0.0044 285.82);
+
+  --brand-fire: oklch(79.08% 0.12605 46.9238); /* custom orange */
+  --brand-fire-foreground: oklch(63.68% 0.2078 25.33); /* red-500 */
+  --background-fire: oklch(14.05% 0.0044 285.82);
+
+  --brand-ultraviolet: oklch(70.93% 0.1589 293.52); /* violet-400 */
+  --brand-ultraviolet-foreground: oklch(51.03% 0.2303 276.94); /* indigo-600 */
+  --background-ultraviolet: oklch(14.05% 0.0044 285.82);
+
+  --brand-ice: oklch(92.9% 0.0126 255.53); /* slate-200 */
+  --brand-ice-foreground: oklch(75.37% 0.1389 232.59); /* sky-400 */
+  --background-ice: oklch(14.05% 0.0044 285.82);
+
+  --brand-titanium: oklch(87.09% 0.0055 286.29); /* zinc-300 */
+  --brand-titanium-foreground: oklch(55.19% 0.0137 285.94); /* zinc-500 */
+  --background-titanium: oklch(14.05% 0.0044 285.82);
+
+  --brand-emerald: oklch(84.53% 0.1298 164.99); /* emerald-300 */
+  --brand-emerald-foreground: oklch(69.58% 0.1491 162.46); /* emerald-600 */
+  --background-emerald: oklch(14.05% 0.0044 285.82);
+
+  --brand-holo: oklch(87.87% 0.1534 91.54); /* amber-300 */
+  --brand-holo-foreground: oklch(55.78% 0.2524 302.36); /* purple-600 */
+  --background-holo: oklch(14.05% 0.0044 285.82);
+
+  --brand-octa: oklch(66.27% 0.309 325.64); /* amber-300 */
+  --brand-octa-foreground: oklch(59.87% 0.233 325.88); /* purple-600 */
+  --background-octa: oklch(14.05% 0.0044 285.82);
+
+  --brand-electro: oklch(85.48% 0.1251 181.11); /* teal-300 */
+  --brand-electro-foreground: oklch(48.78% 0.217 264.39); /* blue-700 */
+  --background-electro: oklch(14.05% 0.0044 285.82);
+}
