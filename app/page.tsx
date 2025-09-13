@@ -8,6 +8,7 @@
     Cloud,
     Box,
     Terminal,
+    Download,
     Server,
     Settings,
     Database,
@@ -19,6 +20,11 @@
     Share2,
     ListChecks,
     Tag,
+    Blocks,
+    Power,
+    Logs,
+    Hexagon,
+    Microchip,
   } from "lucide-react";
 
   import Navbar from "../components/sections/navbar/sticky";
@@ -60,6 +66,7 @@
   import { Input } from "../components/ui/input";
   import TilesIllustration from "@/components/illustrations/tiles";
 import Github from "@/components/logos/github";
+import { Play } from "next/font/google";
 
   
   export default function MCPServerPage() {
@@ -376,38 +383,38 @@ import Github from "@/components/logos/github";
           ]}
         />
           <Items
-            title="OctaSpace Marketplace Features"
+            title="OctaSpace Marketplace Features for AI, GPU & Cloud Computing"
             items={[
               {
-                title: "Ready-to-launch apps",
+                title: "Launch-Ready Apps",
                 description:
-                  "Run over 50+ ready-to-launch instances and apps within minutes across a wide range of categories, ranging from AI training to image and video generation, participate in testnets, mining and many more.",
-                icon: <Lock className="text-muted-foreground size-6 stroke-1" />,
+                  "Access over 50 pre-configured AI training, image generation, video generation, and cloud computing applications, ready to deploy in minutes.",
+                icon: <Power className="text-muted-foreground size-6 stroke-1" />,
               },
               {
-                title: "Dockerized instances",
+                title: "Dockerized Instances",
                 description:
-                  "Launch practically anything using docker containers, whether it's from ",
-                icon: <Globe className="text-muted-foreground size-6 stroke-1" />,
+                  "Our platform offers unparalleled flexibility, allowing you to launch Docker containers from DockerHub and HuggingFace for any computing task.",
+                icon: <Download className="text-muted-foreground size-6 stroke-1" />,
               },
               {
-                title: "Integrate your own apps",
+                title: "Custom App Integration",
                 description:
-                  "Comprehensive API access for automating deployments, configurations, and management tasks.",
+                  "Easily integrate, create, and launch your own custom applications directly in our marketplace.",
                 icon: (
-                  <Network className="text-muted-foreground size-6 stroke-1" />
+                  <Blocks className="text-muted-foreground size-6 stroke-1" />
                 ),
               },
               {
-                title: "Edge Computing",
+                title: "Global Node Network",
                 description:
-                  "Execute code at the edge for faster responses and reduced backend load.",
-                icon: <Cloud className="text-muted-foreground size-6 stroke-1" />,
+                  "Scale your projects globally by running AI models on GPU nodes located around the world.",
+                icon: <Globe className="text-muted-foreground size-6 stroke-1" />,
               },
               {
-                title: "Configuration Management",
+                title: "Simplified Management",
                 description:
-                  "Version-controlled configuration files with easy rollback capabilities.",
+                  "The OctaSpace Cube provides comprehensive account management, from extensive billing to managing node providers and identifying issues.",
                 icon: (
                   <Settings className="text-muted-foreground size-6 stroke-1" />
                 ),
@@ -415,23 +422,23 @@ import Github from "@/components/logos/github";
               {
                 title: "Logging & Monitoring",
                 description:
-                  "Advanced logging with searchable history and customizable alerts for critical events.",
+                  "Get detailed insights with advanced container logs and app logs for effective monitoring.",
                 icon: (
-                  <Database className="text-muted-foreground size-6 stroke-1" />
+                  <Logs className="text-muted-foreground size-6 stroke-1" />
                 ),
               },
               {
-                title: "Priority Support",
+                title: "Extensive node support",
                 description:
-                  "Priority support for critical issues and proactive assistance to ensure your MCP servers are always running smoothly.",
-                icon: <User className="text-muted-foreground size-6 stroke-1" />,
+                  "Our marketplace offers a diverse selection of compute nodes with automated filtering, including options with GPU passthrough for direct virtual machine (VM) use cases.",
+                icon: <Hexagon className="text-muted-foreground size-6 stroke-1" />,
               },
               {
-                title: "Custom Integrations",
+                title: "Multi-Architecture Support",
                 description:
-                  "Seamless integration with your existing systems and tools for a streamlined deployment process.",
+                  "Our platform is built for flexibility, supporting various CPU and GPU architectures, including Nvidia, Intel, and AMD. You can choose CPU-only nodes or nodes with a mix of architectures to fit your specific needs.",
                 icon: (
-                  <Webhook className="text-muted-foreground size-6 stroke-1" />
+                  <Microchip className="text-muted-foreground size-6 stroke-1" />
                 ),
               },
             ]}
@@ -457,7 +464,7 @@ import Github from "@/components/logos/github";
             className="pt-0 pb-8"
           />
         )}
-          <CarouselLarge></CarouselLarge>
+         {/*<CarouselLarge></CarouselLarge>*/}
           <FeatureStickyRight
               title=""
               description={
@@ -482,7 +489,7 @@ import Github from "@/components/logos/github";
               }
               videoSrc="/img/ship.mp4"
             />
-          <LogosMarquee />
+         {/* <LogosMarquee />*/}
           <FeatureStickyLeft
             title="Total Freedom. Anywhere."
             description={
@@ -497,7 +504,7 @@ import Github from "@/components/logos/github";
         {/* FAQ, CTA, Footer */}
 
 
-          <FAQ
+        {/*  <FAQ
             title="Frequently asked questions"
             items={[
               {
@@ -556,7 +563,7 @@ import Github from "@/components/logos/github";
                 ),
               },
             ]}
-          />
+          />*/}
           <CTA
             title="Ready to Revolutionize Your Computing?"
             buttons={[
@@ -581,6 +588,7 @@ import Github from "@/components/logos/github";
             links: [
               { text: "OctaRender", href: "https://render.octa.space/" },
               { text: "Marketplace", href: "https://marketplace.octa.space/" },
+              { text: "OctaSpace Cube", href: "https://cube.octa.computer/" },
               { text: "Documentation", href: "https://docs.octa.space/" },
             ],
           },
@@ -596,13 +604,13 @@ import Github from "@/components/logos/github";
         copyright="© 2025 OctaSpace. All rights reserved."
         socials={[
           { label: "X", href: "https://x.com/octa_space", icon: SocialIcons.x },
-          { label: "Telegram", href: "https://t.me/octaspace", icon: SocialIcons.telegram },
+          { label: "Telegram", href: "https://t.me/octa_space", icon: SocialIcons.telegram },
           { label: "Discord", href: "https://discord.gg/octaspace", icon: SocialIcons.discord },
           { label: "GitHub", href: "https://github.com/octaspace", icon: SocialIcons.github },
           { label: "Reddit", href: "https://reddit.com/r/octaspace", icon: SocialIcons.reddit },
-          { label: "Medium", href: "https://medium.com/@octaspace", icon: SocialIcons.medium },
-          { label: "YouTube", href: "https://youtube.com/@octaspace", icon: SocialIcons.youtube },
-          { label: "Instagram", href: "https://instagram.com/octaspace", icon: SocialIcons.instagram },
+          { label: "Medium", href: "https://blog.octa.space/", icon: SocialIcons.medium },
+          { label: "YouTube", href: "https://www.youtube.com/@octa_space", icon: SocialIcons.youtube },
+          { label: "Instagram", href: "https://www.instagram.com/octaspace.official", icon: SocialIcons.instagram },
         ]}
       />
       </div>

@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
-
-export default nextConfig;
+const nextConfig = {
+    devIndicators: {
+      buildActivity: false, // disables the build spinner in the corner
+      autoPrerender: false, // optional, disables auto-prerender overlay if needed
+    },
+  };
+  
+  export default nextConfig;
+  
