@@ -445,7 +445,7 @@ import { Play } from "next/font/google";
           />
                     <div className="relative w-full h-[300px] md:h-[700px] bg-off-black">
             <video
-              src="/img/gpu2.mp4"
+              src="/img/GPU2.mp4"
               autoPlay
               loop
               muted
