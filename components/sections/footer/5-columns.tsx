@@ -1,3 +1,4 @@
+import * as React from "react";
 import { ReactNode } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -94,13 +95,15 @@ export default function FooterSection({
       <div className="max-w-container mx-auto">
         <Footer className="border-border dark:border-border/15 border-t pt-8">
           <FooterContent className="sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-            {/* Logo + socials */}
-            <FooterColumn className="col-span-2 flex-row items-center justify-between gap-8 border-b pb-8 md:col-span-1 md:flex-col md:items-start md:justify-start md:border-b-0">
+            
+            {/* Logo + Socials */}
+            <FooterColumn className="col-span-2 md:col-span-1 flex flex-col items-start gap-6 border-b pb-8 md:border-b-0">
               <div className="flex items-center gap-2">
                 {logo}
                 <h3 className="text-xl font-bold">{name}</h3>
               </div>
-              <div className="ml-2.5 flex gap-4 sm:ml-0">
+
+              <div className="flex flex-wrap gap-2 sm:gap-3">
                 {socials.map((social, index) => (
                   <Link
                     key={index}
@@ -110,13 +113,16 @@ export default function FooterSection({
                     className="text-muted-foreground hover:text-foreground transition"
                   >
                     <span className="sr-only">{social.label}</span>
-                    {social.icon}
+                    {React.cloneElement(
+                      social.icon as React.ReactElement<React.SVGProps<SVGSVGElement>>,
+                      { className: "h-5 w-5 sm:h-6 sm:w-6" } // responsive size
+                    )}
                   </Link>
                 ))}
               </div>
             </FooterColumn>
 
-            {/* Footer links */}
+            {/* Footer Links */}
             {columns.map((column, index) => (
               <FooterColumn key={index}>
                 <h3 className="text-md pt-1 font-semibold">{column.title}</h3>
@@ -131,6 +137,7 @@ export default function FooterSection({
                 ))}
               </FooterColumn>
             ))}
+
           </FooterContent>
 
           <FooterBottom className="border-0">

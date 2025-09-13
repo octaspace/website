@@ -376,22 +376,22 @@ import Github from "@/components/logos/github";
           ]}
         />
           <Items
-            title="MCP server capabilities"
+            title="OctaSpace Marketplace Features"
             items={[
               {
-                title: "SSL Encryption",
+                title: "Ready-to-launch apps",
                 description:
-                  "Automatic SSL certificate provisioning and renewal for secure connections to your MCP servers.",
+                  "Run over 50+ ready-to-launch instances and apps within minutes across a wide range of categories, ranging from AI training to image and video generation, participate in testnets, mining and many more.",
                 icon: <Lock className="text-muted-foreground size-6 stroke-1" />,
               },
               {
-                title: "Custom Domains",
+                title: "Dockerized instances",
                 description:
-                  "Connect your own domain names to your MCP servers with easy DNS configuration and management.",
+                  "Launch practically anything using docker containers, whether it's from ",
                 icon: <Globe className="text-muted-foreground size-6 stroke-1" />,
               },
               {
-                title: "API Integration",
+                title: "Integrate your own apps",
                 description:
                   "Comprehensive API access for automating deployments, configurations, and management tasks.",
                 icon: (
@@ -436,7 +436,7 @@ import Github from "@/components/logos/github";
               },
             ]}
           />
-                    <div className="relative w-full h-[300px] md:h-[600px] bg-off-black">
+                    <div className="relative w-full h-[300px] md:h-[700px] bg-off-black">
             <video
               src="/img/gpu2.mp4"
               autoPlay
@@ -579,28 +579,17 @@ import Github from "@/components/logos/github";
           {
             title: "Product",
             links: [
-              { text: "Features", href: "#" },
-              { text: "Pricing", href: "#" },
-              { text: "Documentation", href: "#" },
-              { text: "API", href: "#" },
-            ],
-          },
-          {
-            title: "Resources",
-            links: [
-              { text: "Guides", href: "#" },
-              { text: "Examples", href: "#" },
-              { text: "Webinars", href: "#" },
-              { text: "Case Studies", href: "#" },
+              { text: "OctaRender", href: "https://render.octa.space/" },
+              { text: "Marketplace", href: "https://marketplace.octa.space/" },
+              { text: "Documentation", href: "https://docs.octa.space/" },
             ],
           },
           {
             title: "Company",
             links: [
-              { text: "About", href: "#" },
+              { text: "Privacy policy", href: "/about" },
               { text: "Blog", href: "#" },
-              { text: "Careers", href: "#" },
-              { text: "Contact", href: "#" },
+              { text: "Contact", href: "mailto:hello@octa.space" },
             ],
           },
         ]}
