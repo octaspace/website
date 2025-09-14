@@ -34,6 +34,7 @@
   import Hero from "../components/sections/hero/layers";
   import { SocialIcons } from "../components/sections/footer/socials";
   import Stats from "../components/sections/stats/grid-boxed";
+  import Stats2 from "../components/sections/stats/default";
   import LogosMarquee from "../components/sections/logos/marquee2";
   import BentoGrid from "../components/sections/bento-grid/3-rows-top";
   import FeatureIllustrationBottom from "../components/sections/feature/illustration-bottom";
@@ -311,6 +312,7 @@ import { Play } from "next/font/google";
             description="Uncompromising capability beyond the cloud you know."
             visual={<RisingLargeIllustration />}
           />
+          
           <TabsLeft
           title="From Click to Compute."
           description="The compute power you need, delivered instantly through an intuitive workflow."
@@ -478,7 +480,7 @@ import { Play } from "next/font/google";
                     </p>
                     <a
                       href="https://render.octa.space/"
-                      className="text-foreground underline-offset-4 hover:underline inline-block"
+                      className="text-foreground underline-offset-6 hover:underline inline-block"
                       style={{ lineHeight: "1.5" }} // optional for spacing
                     >
                       Learn more about OctaRender

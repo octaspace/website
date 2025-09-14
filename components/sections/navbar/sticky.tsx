@@ -37,11 +37,10 @@ interface NavbarProps {
 export default function Navbar({
   logo = <LaunchUI />,
   name = "Launch UI",
-  homeUrl = "#",
+  homeUrl = "https://octa.space/",
   mobileLinks = [
-    { text: "Getting Started", href: "#" },
-    { text: "Components", href: "#" },
-    { text: "Documentation", href: "#" },
+    { text: "Get Started", href: "https://marketplace.octa.space/" },
+    { text: "Documentation", href: "https://docs.octa.space/" },
   ],
   actions = [
     { text: "Sign in", href: "#", isButton: false },
