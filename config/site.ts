@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "OctaSpace | Decentralized compute",
+  name: "OctaSpace | Decentralized GPU Cloud & AI Compute",
   url: "https://octa.space/",
   getStartedUrl:
     "https://octa.space/",
