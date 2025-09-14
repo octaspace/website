@@ -15,21 +15,45 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.getStartedUrl),
   description: siteConfig.description,
   keywords: [
-    "Landing page template",
-    "Components",
-    "Shadcn",
-    "Next.js",
-    "React",
-    "Tailwind CSS",
-    "Radix UI",
+    // Core Value Proposition Keywords
+    "decentralized GPU cloud",
+    "decentralized cloud computing",
+    "GPU as a service",
+    "rent GPUs",
+    "on-demand GPU",
+
+    // Use Case & Application-Specific Keywords
+    "AI training",
+    "machine learning",
+    "deep learning",
+    "rendering platform",
+    "HPC", // High-Performance Computing
+    "blockchain nodes",
+    "remote gaming",
+
+    // Technology Stack Keywords
+    "Docker",
+    "containers",
+    "NVIDIA",
+    "RTX 4090", // Include specific GPU models you support
+    "H100",
+    "A100",
+
+    // Web3 & Crypto-specific Keywords
+    "DePIN", // Decentralized Physical Infrastructure Networks
+    "Web3",
+    "crypto project",
+    "blockchain",
+    "OctaSpace",
+    "OCTA token",
   ],
   authors: [
     {
-      name: "Mikolaj Dobrucki",
-      url: "https://mikolajdobrucki.com",
+      name: "OctaSpace",
+      url: "https://octa.space/",
     },
   ],
-  creator: "mikolajdobrucki",
+  creator: "OctaSpace",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -51,7 +75,7 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
-    creator: "@mikolajdobrucki",
+    creator: "@octa_space",
   },
   icons: {
     icon: "/favicon.svg",
