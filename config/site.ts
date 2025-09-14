@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "OctaSpace | Decentralized compute",
   url: "https://octa.space/",
   getStartedUrl:
-    "https://marketplace.octa.space/",
+    "https://octa.space/",
   ogImage: "https://octa.space/og.jpg",
   description:
     "OctaSpace AI & Cloud Compute. Powered by a Decentralized GPU Network.",
