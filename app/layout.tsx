@@ -1,7 +1,6 @@
 import "@/app/globals.css";
 
 import type { Metadata } from "next";
-import Head from "next/head";
 
 import { ThemeProvider } from "@/components/contexts/theme-provider";
 import { inter } from "@/lib/fonts";
@@ -82,6 +81,9 @@ export const metadata: Metadata = {
     icon: "/favicon.svg",
     apple: "/apple-touch-icon.png",
   },
+  alternates: {
+    canonical: siteConfig.getStartedUrl,
+  },
 };
 
 export default function RootLayout({
@@ -91,9 +93,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" style={{ colorScheme: "dark" }} className="dark">
-      <Head>
-        <link rel="canonical" href={siteConfig.getStartedUrl} />
-      </Head>
       <body className={`${inter.className} bg-background antialiased`}>
         <ThemeProvider>{children}</ThemeProvider>
       </body>
