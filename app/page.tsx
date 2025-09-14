@@ -489,9 +489,9 @@ export default function MCPServerPage() {
               title=""
               description={
                 <div className="top-32 flex flex-col items-start gap-4 py-4 text-center sm:gap-12 md:sticky md:py-12 md:text-left">
-                  <h1 className="from-foreground to-foreground dark:to-muted-foreground relative z-10 inline-block max-w-[920px] bg-linear-to-r bg-clip-text text-3xl font-semibold text-balance text-transparent drop-shadow-2xl sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight lg:text-6xl lg:leading-tight">
+                  <h2 className="from-foreground to-foreground dark:to-muted-foreground relative z-10 inline-block max-w-[920px] bg-linear-to-r bg-clip-text text-3xl font-semibold text-balance text-transparent drop-shadow-2xl sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight lg:text-6xl lg:leading-tight">
                     Your Animations, Made Instant.
-                  </h1>
+                  </h2>
                   <div className="text-md text-muted-foreground relative z-10 max-w-[620px] flex flex-col gap-4 font-medium sm:text-xl">
                     <p>
                       OctaRender is a cutting edge distributed rendering platform that gives artists and creators unparalleled speed and efficiency. Leverage our global network of nodes to render complex 3D scenes in a fraction of the time, all with simplicity in mind.

@@ -43,9 +43,9 @@ export default function FeatureStickyLeft({
     >
       <div className="max-w-container relative z-10 mx-auto flex flex-col items-center gap-12 md:flex-row md:items-start lg:gap-24">
         <div className="top-32 left-0 flex flex-col items-start gap-4 py-4 text-center sm:gap-12 md:sticky md:py-12 md:text-left">
-          <h1 className="from-foreground to-foreground dark:to-muted-foreground relative z-10 inline-block max-w-[920px] bg-linear-to-r bg-clip-text text-3xl font-semibold text-balance text-transparent drop-shadow-2xl sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight lg:text-6xl lg:leading-tight">
+          <h2 className="from-foreground to-foreground dark:to-muted-foreground relative z-10 inline-block max-w-[920px] bg-linear-to-r bg-clip-text text-3xl font-semibold text-balance text-transparent drop-shadow-2xl sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight lg:text-6xl lg:leading-tight">
             {title}
-          </h1>
+          </h2>
           <div className="text-md text-muted-foreground relative z-10 flex max-w-[620px] flex-col gap-4 font-medium text-balance sm:text-xl">
             {description}
           </div>
