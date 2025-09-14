@@ -104,7 +104,9 @@ import { Play } from "next/font/google";
   
           // Pricing section → normalize for PricingColumnProps
           const gpuPriority: Record<string, number> = {
-            "NVIDIA A100-SXM4-40GB": 100,
+            "NVIDIA H100 80GB HBM3":100,
+            "NVIDIA A100-SXM4-40GB": 99,
+            "NVIDIA RTX A6000": 98,
             "NVIDIA GeForce RTX 5090": 90,
             "NVIDIA GeForce RTX 4090": 85,
             "NVIDIA GeForce RTX 5080": 80,
