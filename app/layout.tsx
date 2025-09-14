@@ -13,8 +13,9 @@ export const metadata: Metadata = {
     default: siteConfig.name,
     template: `%s - ${siteConfig.name}`,
   },
-  metadataBase: new URL(siteConfig.getStartedUrl),
-  description: siteConfig.description,
+  metadataBase: new URL(siteConfig.url), // Use main domain
+  description:
+    "Unleash the power of AI and cloud computing with OctaSpace, a decentralized GPU network. Experience high-performance, cost-effective, and secure computing for all your workloads.",
   keywords: [
     "decentralized GPU cloud",
     "decentralized cloud computing",
@@ -51,7 +52,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: siteConfig.getStartedUrl,
+    url: siteConfig.url,
     title: siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,
@@ -76,7 +77,7 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   alternates: {
-    canonical: siteConfig.getStartedUrl,
+    canonical: siteConfig.url,
   },
 };
 
@@ -99,6 +100,44 @@ export default function RootLayout({
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-CQJXWVFMH5');
+          `}
+        </Script>
+
+        {/* JSON-LD Schema Markup */}
+        <Script id="json-ld-organization" type="application/ld+json" strategy="afterInteractive">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "OctaSpace",
+            "url": "https://octa.space/",
+            "logo": "https://octa.space/og.jpg",
+            "sameAs": [
+              "https://x.com/octa_space",
+              "https://github.com/octaspace"
+            ],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "email": "hello@octa.space",
+              "contactType": "customer support"
+            }
+          }
+          `}
+        </Script>
+
+        <Script id="json-ld-website" type="application/ld+json" strategy="afterInteractive">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "OctaSpace",
+            "url": "https://octa.space/",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://octa.space/search?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          }
           `}
         </Script>
 
