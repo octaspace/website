@@ -41,6 +41,10 @@ export default function Navbar({
   mobileLinks = [
     { text: "Get Started", href: "https://marketplace.octa.space/" },
     { text: "Documentation", href: "https://docs.octa.space/" },
+    { text: "OctaSpace Marketplace", href: "https://marketplace.octa.space/" },
+    { text: "OctaRender", href: "https://render.octa.computer/" },
+    { text: "OctaSpace Cube", href: "https://cube.octa.computer" },
+
   ],
   actions = [
     { text: "Sign in", href: "#", isButton: false },
