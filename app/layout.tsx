@@ -1,6 +1,7 @@
 import "@/app/globals.css";
 
 import type { Metadata } from "next";
+import Script from "next/script";
 
 import { ThemeProvider } from "@/components/contexts/theme-provider";
 import { inter } from "@/lib/fonts";
@@ -93,6 +94,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" style={{ colorScheme: "dark" }} className="dark">
+      <head>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-CQJXWVFMH5"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-CQJXWVFMH5');
+          `}
+        </Script>
+      </head>
       <body className={`${inter.className} bg-background antialiased`}>
         <ThemeProvider>{children}</ThemeProvider>
       </body>
