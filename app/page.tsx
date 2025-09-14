@@ -1,5 +1,6 @@
   "use client";
   import { useEffect, useState } from "react";
+  import Head from "next/head";
   import {
     Lock,
     Network,
@@ -26,7 +27,7 @@
     Hexagon,
     Microchip,
   } from "lucide-react";
-
+  
   import Navbar from "../components/sections/navbar/sticky";
   import { Badge } from "../components/ui/badge";
   import Link from "next/link"; // Make sure Link is imported
@@ -127,7 +128,7 @@ import { Play } from "next/font/google";
               ],
               cta: {
                 label: "Rent now",
-                href: "https://marketplace.octa.space/",
+                href: "https://marketplace.octa.space/compute",
                 variant: "glow",
               },
               variant: "default",
@@ -168,6 +169,14 @@ import { Play } from "next/font/google";
           } as React.CSSProperties
         }
       >
+        <Head>
+          <title>OctaSpace – Decentralized AI & Cloud Compute</title>
+          <meta
+            name="description"
+            content="Run AI, render, and scale globally with GPU power, ready-made apps, and built-in privacy solutions."
+          />
+          <link rel="canonical" href="https://octa.space/" />
+        </Head>
         <Navbar
           logo={<OctaLogo className="h-8 w-auto" />}
           name="OctaSpace"
