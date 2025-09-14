@@ -5,7 +5,7 @@ export const siteConfig = {
     "https://octa.space/",
   ogImage: "https://octa.space/og.jpg",
   description:
-    "OctaSpace AI & Cloud Compute. Powered by a Decentralized GPU Network.",
+    "Unleash the power of AI and cloud computing with OctaSpace, a decentralized GPU network. Experience high-performance, cost-effective, and secure computing for all your workloads.",
   links: {
     twitter: "https://x.com/octa_space",
     github: "https://github.com/octaspace",
