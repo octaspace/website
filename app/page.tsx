@@ -571,7 +571,7 @@ import { Play } from "next/font/google";
             buttons={[
               {
                 text: "Get Started",
-                href: "#",
+                href: "https://marketplace.octa.space/",
                 variant: "glow",
               },
               {
@@ -598,7 +598,7 @@ import { Play } from "next/font/google";
             title: "Company",
             links: [
               { text: "Privacy policy", href: "/about" },
-              { text: "Blog", href: "#" },
+              { text: "Blog", href: "https://blog.octa.space/" },
               { text: "Contact", href: "mailto:hello@octa.space" },
             ],
           },
