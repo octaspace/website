@@ -71,54 +71,61 @@ import Github from "@/components/logos/github";
 import { Play } from "next/font/google";
 
   
-  export default function MCPServerPage() {
-    const [statsItems, setStatsItems] = useState<any[]>([]);
-    const [plans, setPlans] = useState<any[]>([]);
-    const [loadingStats, setLoadingStats] = useState(true);
-  
-    useEffect(() => {
-      async function fetchStats() {
-        try {
-          const res = await fetch("https://api.octa.computer/network");
-          const data = await res.json();
-  
-          // Stats section
-          const items = [
-            {
-              value: data.power?.gpus?.toString(),
-              label: "Total GPUs:",
-              description: "Available for Rent",
-            },
-            {
-              value: data.nodes?.count?.toString(),
-              label: "Total nodes:",
-              description: "Offering Compute Power",
-            },
-            {
-              value: data.platform?.users?.toString(),
-              label: "Registered users:",
-              description: "Users & Growing",
-            },
-          ];
-          setStatsItems(items);
-  
-          // Pricing section → normalize for PricingColumnProps
-          const gpuPriority: Record<string, number> = {
-            "NVIDIA H100 80GB HBM3":100,
-            "NVIDIA A100-SXM4-40GB": 99,
-            "NVIDIA RTX A6000": 98,
-            "NVIDIA GeForce RTX 5090": 90,
-            "NVIDIA GeForce RTX 4090": 85,
-            "NVIDIA GeForce RTX 5080": 80,
-            "NVIDIA GeForce RTX 4080": 75,
-            "NVIDIA GeForce RTX 4070": 70,
-            "NVIDIA GeForce RTX 3090": 60,
-            "NVIDIA GeForce RTX 5070": 50,
-          };
-          
-          const gpuPlans = Object.entries(data.marketplace.gpus)
-            .map(([gpuName, gpuData]: [string, any]) => ({
-              name: gpuName,
+export default function MCPServerPage() {
+  const [statsItems, setStatsItems] = useState<any[]>([]);
+  const [plans, setPlans] = useState<any[]>([]);
+  const [loadingStats, setLoadingStats] = useState(true);
+
+  useEffect(() => {
+    async function fetchStats() {
+      try {
+        const res = await fetch("https://api.octa.computer/network");
+        const data = await res.json();
+
+        // Stats section
+        const items = [
+          {
+            value: data.power?.gpus?.toString(),
+            label: "Total GPUs:",
+            description: "Available for Rent",
+          },
+          {
+            value: data.nodes?.count?.toString(),
+            label: "Total nodes:",
+            description: "Offering Compute Power",
+          },
+          {
+            value: data.platform?.users?.toString(),
+            label: "Registered users:",
+            description: "Users & Growing",
+          },
+        ];
+        setStatsItems(items);
+
+        // Pricing section → normalize for PricingColumnProps
+        const gpuPriority: Record<string, number> = {
+          "NVIDIA H100 80GB HBM3": 100,
+          "NVIDIA A100-SXM4-40GB": 99,
+          "NVIDIA RTX A6000": 98,
+          "NVIDIA GeForce RTX 5090": 90,
+          "NVIDIA GeForce RTX 4090": 85,
+          "NVIDIA GeForce RTX 5080": 80,
+          "NVIDIA GeForce RTX 4080": 75,
+          "NVIDIA GeForce RTX 4070": 70,
+          "NVIDIA GeForce RTX 3090": 60,
+          "NVIDIA GeForce RTX 5070": 50,
+        };
+
+        const gpuPlans = Object.entries(data.marketplace.gpus)
+          .map(([gpuName, gpuData]: [string, any]) => {
+            // ✅ Strip NVIDIA + GeForce
+            const cleanName = gpuName
+              .replace(/NVIDIA\s*/g, "")
+              .replace(/GeForce\s*/g, "")
+              .trim();
+
+            return {
+              name: cleanName, // ✅ use cleaned name
               description: `${gpuData.count} available`,
               price: gpuData.avg_price,
               priceNote: "per hour",
@@ -134,29 +141,29 @@ import { Play } from "next/font/google";
                 variant: "glow",
               },
               variant: "default",
-              priority: gpuPriority[gpuName] || 0, // fallback to 0 if GPU not in priority list
-            }))
-            // Sort by priority (highest first), then by availability
-            .sort((a, b) => {
-              if (b.priority === a.priority) {
-                const countA = parseInt(a.features[1].match(/\d+/)?.[0] || "0");
-                const countB = parseInt(b.features[1].match(/\d+/)?.[0] || "0");
-                return countB - countA;
-              }
-              return b.priority - a.priority;
-            });
-          
-          setPlans(gpuPlans);
-          
-          setLoadingStats(false);
-        } catch (err) {
-          console.error("Failed to fetch network stats:", err);
-          setLoadingStats(false);
-        }
+              priority: gpuPriority[gpuName] || 0, // keep original for sorting
+            };
+          })
+          // Sort by priority (highest first), then by availability
+          .sort((a, b) => {
+            if (b.priority === a.priority) {
+              const countA = parseInt(a.features[1].match(/\d+/)?.[0] || "0");
+              const countB = parseInt(b.features[1].match(/\d+/)?.[0] || "0");
+              return countB - countA;
+            }
+            return b.priority - a.priority;
+          });
+
+        setPlans(gpuPlans);
+        setLoadingStats(false);
+      } catch (err) {
+        console.error("Failed to fetch network stats:", err);
+        setLoadingStats(false);
       }
-  
-      fetchStats();
-    }, []);
+    }
+
+    fetchStats();
+  }, []);
     return (
       <div
         className="flex flex-col"
