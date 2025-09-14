@@ -1,6 +1,7 @@
 import "@/app/globals.css";
 
 import type { Metadata } from "next";
+import Head from "next/head";
 
 import { ThemeProvider } from "@/components/contexts/theme-provider";
 import { inter } from "@/lib/fonts";
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     "machine learning",
     "deep learning",
     "rendering platform",
-    "HPC", // High-Performance Computing
+    "HPC",
     "blockchain nodes",
     "remote gaming",
 
@@ -35,12 +36,12 @@ export const metadata: Metadata = {
     "Docker",
     "containers",
     "NVIDIA",
-    "RTX 4090", // Include specific GPU models you support
+    "RTX 4090",
     "H100",
     "A100",
 
     // Web3 & Crypto-specific Keywords
-    "DePIN", // Decentralized Physical Infrastructure Networks
+    "DePIN",
     "Web3",
     "crypto project",
     "blockchain",
@@ -90,6 +91,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" style={{ colorScheme: "dark" }} className="dark">
+      <Head>
+        <link rel="canonical" href={siteConfig.getStartedUrl} />
+      </Head>
       <body className={`${inter.className} bg-background antialiased`}>
         <ThemeProvider>{children}</ThemeProvider>
       </body>
