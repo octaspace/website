@@ -16,14 +16,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.getStartedUrl),
   description: siteConfig.description,
   keywords: [
-    // Core Value Proposition Keywords
     "decentralized GPU cloud",
     "decentralized cloud computing",
     "GPU as a service",
     "rent GPUs",
     "on-demand GPU",
-
-    // Use Case & Application-Specific Keywords
     "AI training",
     "machine learning",
     "deep learning",
@@ -31,16 +28,12 @@ export const metadata: Metadata = {
     "HPC",
     "blockchain nodes",
     "remote gaming",
-
-    // Technology Stack Keywords
     "Docker",
     "containers",
     "NVIDIA",
     "RTX 4090",
     "H100",
     "A100",
-
-    // Web3 & Crypto-specific Keywords
     "DePIN",
     "Web3",
     "crypto project",
@@ -94,7 +87,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" style={{ colorScheme: "dark" }} className="dark">
-      <head>
+      <body className={`${inter.className} bg-background antialiased`}>
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-CQJXWVFMH5"
@@ -108,8 +101,7 @@ export default function RootLayout({
             gtag('config', 'G-CQJXWVFMH5');
           `}
         </Script>
-      </head>
-      <body className={`${inter.className} bg-background antialiased`}>
+
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
