@@ -102,7 +102,7 @@ export default function RootLayout({
             gtag('config', 'G-CQJXWVFMH5');
           `}
         </Script>
-
+        
         {/* JSON-LD Schema Markup */}
         <Script id="json-ld-organization" type="application/ld+json" strategy="afterInteractive">
           {`
@@ -114,12 +114,17 @@ export default function RootLayout({
             "logo": "https://octa.space/og.jpg",
             "sameAs": [
               "https://x.com/octa_space",
-              "https://github.com/octaspace"
+              "https://t.me/octa_space",
+              "https://discord.gg/octaspace",
+              "https://github.com/octaspace",
+              "https://reddit.com/r/octaspace",
+              "https://blog.octa.space/",
+              "https://www.instagram.com/octaspace.official"
             ],
             "contactPoint": {
-              "@type": "ContactPoint",
-              "email": "hello@octa.space",
-              "contactType": "customer support"
+                "@type": "ContactPoint",
+                "email": "hello@octa.space",
+                "contactType": "customer support"
             }
           }
           `}
