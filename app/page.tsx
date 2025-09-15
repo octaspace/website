@@ -113,8 +113,8 @@ export default function MCPServerPage() {
             },
             {
               value: data.nodes?.locations?.toString(),
-              label: "Worldwide Network",
-              description: "Nodes Across the Globe",
+              label: "Global Reach",
+              description: "Decentralized Locations",
             },
             {
               value: data.marketplace?.total_sessions?.toString(),
