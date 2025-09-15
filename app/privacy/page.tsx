@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../../components/sections/navbar/sticky";
 import Footer from "../../components/sections/footer/5-columns";
 import OctaLogo from "../../components/logos/octa";
+import { SocialIcons } from "../../components/sections/footer/socials";
 
 export const metadata = {
   title: "Privacy Policy - OctaSpace",
@@ -119,7 +120,39 @@ export default function PrivacyPolicyPage() {
       </main>
 
       {/* Footer */}
-      <Footer />
+      <Footer
+        logo={<OctaLogo className="h-8 w-auto" />}
+        columns={[
+          {
+            title: "Product",
+            links: [
+              { text: "OctaRender", href: "https://render.octa.space/" },
+              { text: "Marketplace", href: "https://marketplace.octa.space/" },
+              { text: "OctaSpace Cube", href: "https://cube.octa.computer/" },
+              { text: "Documentation", href: "https://docs.octa.space/" },
+            ],
+          },
+          {
+            title: "Company",
+            links: [
+              { text: "Privacy policy", href: "/privacy" },
+              { text: "Blog", href: "https://blog.octa.space/" },
+              { text: "Contact", href: "mailto:hello@octa.space" },
+            ],
+          },
+        ]}
+        copyright="© 2025 OctaSpace. All rights reserved."
+        socials={[
+          { label: "X", href: "https://x.com/octa_space", icon: SocialIcons.x },
+          { label: "Telegram", href: "https://t.me/octa_space", icon: SocialIcons.telegram },
+          { label: "Discord", href: "https://discord.gg/octaspace", icon: SocialIcons.discord },
+          { label: "GitHub", href: "https://github.com/octaspace", icon: SocialIcons.github },
+          { label: "Reddit", href: "https://reddit.com/r/octaspace", icon: SocialIcons.reddit },
+          { label: "Medium", href: "https://blog.octa.space/", icon: SocialIcons.medium },
+          { label: "YouTube", href: "https://www.youtube.com/@octa_space", icon: SocialIcons.youtube },
+          { label: "Instagram", href: "https://www.instagram.com/octaspace.official", icon: SocialIcons.instagram },
+        ]}
+      />
     </div>
   );
 }

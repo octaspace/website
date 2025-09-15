@@ -615,7 +615,7 @@ export default function MCPServerPage() {
           {
             title: "Company",
             links: [
-              { text: "Privacy policy", href: "/about" },
+              { text: "Privacy policy", href: "/privacy" },
               { text: "Blog", href: "https://blog.octa.space/" },
               { text: "Contact", href: "mailto:hello@octa.space" },
             ],
