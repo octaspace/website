@@ -73,6 +73,7 @@ import { Play } from "next/font/google";
   
 export default function MCPServerPage() {
   const [statsItems, setStatsItems] = useState<any[]>([]);
+  const [stats2Items, setStats2Items] = useState<any[]>([]);
   const [plans, setPlans] = useState<any[]>([]);
   const [loadingStats, setLoadingStats] = useState(true);
 
@@ -100,7 +101,29 @@ export default function MCPServerPage() {
             description: "Users & Growing",
           },
         ];
+        
         setStatsItems(items);
+
+        // Stats2 section
+          const items2 = [
+            {
+              value: Math.round(data.power?.tflops || 0).toString(),
+              label: "Raw Power Unleashed",
+              description: "Global TFLOPS on Demand",
+            },
+            {
+              value: data.nodes?.locations?.toString(),
+              label: "Worldwide Network",
+              description: "Nodes Across the Globe",
+            },
+            {
+              value: data.marketplace?.total_sessions?.toString(),
+              label: "Compute Sessions Launched",
+              description: "Sessions",
+            },
+          ];
+          setStats2Items(items2);
+
 
         // Pricing section → normalize for PricingColumnProps
         const gpuPriority: Record<string, number> = {
@@ -330,7 +353,12 @@ export default function MCPServerPage() {
             description="Uncompromising capability beyond the cloud you know."
             visual={<RisingLargeIllustration />}
           />
-          
+          <Stats2
+          className="py-8 sm:py-12 md:py-6"
+            items={stats2Items.length ? stats2Items : [
+              { value: "…", label: "Loading...", description: "" },
+            ]}
+          />
           <TabsLeft
           title="From Click to Compute."
           description="The compute power you need, delivered instantly through an intuitive workflow."

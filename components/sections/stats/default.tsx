@@ -43,11 +43,11 @@ export default function Stats({
     <Section className={className}>
       <div className="container mx-auto max-w-[960px]">
         {items !== false && items.length > 0 && (
-          <div className="grid grid-cols-2 gap-12 sm:grid-cols-4">
+          <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-3">
             {items.map((item, index) => (
               <div
                 key={index}
-                className="flex flex-col items-start gap-3 text-left"
+                className="flex flex-col items-center gap-3 text-center"
               >
                 {item.label && (
                   <div className="text-muted-foreground text-sm font-semibold">
