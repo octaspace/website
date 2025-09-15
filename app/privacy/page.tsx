@@ -115,7 +115,7 @@ export default function PrivacyPolicyPage() {
 
         <h2 className="text-2xl font-semibold mt-8 mb-4">11. Contact Us</h2>
         <p className="mb-2">OctaSpace</p>
-        <p className="mb-2">PO BOX Poole BH15 XXX, United Kingdom</p>
+        <p className="mb-2">Unit 158260, PO Box 7169, Poole, BH15 9EL, United Kingdom</p>
         <p>Email: <a href="mailto:hello@octa.space" className="text-blue-500 underline">hello@octa.space</a></p>
       </main>
 
