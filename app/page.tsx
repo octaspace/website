@@ -359,6 +359,19 @@ export default function MCPServerPage() {
               { value: "…", label: "Loading...", description: "" },
             ]}
           />
+                   <div className="relative w-full h-[300px] md:h-[500px] bg-off-black">
+            <video
+              src="/img/CPU.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              poster="/images/services-hero.webp"
+              className="absolute w-full h-full object-contain mix-blend-lighten"
+            >
+              Your browser does not support the video tag.
+            </video>
+          </div>
           <TabsLeft
           title="From Click to Compute."
           description="The compute power you need, delivered instantly through an intuitive workflow."
