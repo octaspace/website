@@ -40,7 +40,7 @@ export default function PrivacyPolicyPage() {
 
       {/* Page Content */}
       <main className="max-w-container mx-auto px-4 py-12 flex-1">
-        <h1 className="text-4xl font-bold mb-8">Privacy Policy</h1>
+        <h1 className="text-4xl font-bold mb-8">Privacy policy</h1>
         <p className="text-sm text-muted-foreground mb-6">Last updated: 08/09/2025</p>
 
         <p className="mb-6">
