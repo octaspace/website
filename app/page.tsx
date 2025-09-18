@@ -367,6 +367,8 @@ export default function MCPServerPage() {
               muted
               playsInline
               poster="/images/services-hero.webp"
+              controls={false}
+              onContextMenu={(e) => e.preventDefault()}  // disable right click
               className="absolute w-full h-full object-contain mix-blend-lighten"
             >
               Your browser does not support the video tag.
@@ -512,6 +514,8 @@ export default function MCPServerPage() {
               muted
               playsInline
               poster="/images/services-hero.webp"
+              controls={false}
+              onContextMenu={(e) => e.preventDefault()}  // disable right click
               className="absolute w-full h-full object-contain mix-blend-lighten"
             >
               Your browser does not support the video tag.
