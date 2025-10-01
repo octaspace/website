@@ -135,9 +135,10 @@ export default function PrivacyPolicyPage() {
           {
             title: "Company",
             links: [
-              { text: "Privacy policy", href: "/privacy" },
+              { text: "Privacy Policy", href: "/privacy" },
               { text: "Blog", href: "https://blog.octa.space/" },
               { text: "Contact", href: "mailto:hello@octa.space" },
+              { text: "Support", href: "https://discord.com/channels/973249548245925958/1358971594487107787" },
             ],
           },
         ]}
