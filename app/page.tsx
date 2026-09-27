@@ -95,7 +95,11 @@ export default async function MCPServerPage() {
           logo={<OctaLogo className="h-8 w-auto" />}
           name="OctaSpace"
           actions={[
-
+            {
+              text: "Become a provider",
+              href: "/providers",
+              isButton: false,
+            },
             {
               text: "Get Started",
               href: "https://cube.octa.computer/marketplace/compute",
