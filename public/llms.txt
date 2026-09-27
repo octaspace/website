@@ -1,0 +1,51 @@
+# OctaSpace
+
+> OctaSpace is a decentralized GPU cloud and compute marketplace. Rent high-performance GPUs
+> (NVIDIA RTX 3090/4090, A100s, and 30+ other models) by the minute, run VPN and rendering
+> workloads, or earn OCTA by sharing your own hardware. No subscriptions — pay-per-minute,
+> settled on-chain.
+
+## Key links
+
+- Website: https://octa.space/
+- Documentation: https://docs.octa.space/
+- GPU marketplace (rent compute): https://marketplace.octa.space/
+- API reference: https://api.octa.space/api-docs
+- GitHub organization: https://github.com/octaspace
+- X (Twitter): https://x.com/octa_space
+- Contact: hello@octa.space
+
+## Products
+
+- **GPU marketplace**: rent bare-metal GPU machines by the minute; providers set their own prices.
+  Live stats and per-GPU pricing: https://marketplace.octa.space/
+- **OctaVPN**: pay-as-you-go decentralized VPN with multi-platform apps.
+- **OctaRender**: distributed Blender rendering network.
+- **Idle mining**: provider nodes automatically mine when not rented, so hardware is never idle.
+- **OCTA token**: the network's settlement currency for compute, VPN, and rendering.
+
+## Build with OctaSpace
+
+- JavaScript/TypeScript SDK: https://github.com/octaspace/js-sdk (`npm install @octaspace/sdk`)
+- Python SDK: https://github.com/octaspace/python-sdk (`pip install octaspace`)
+- Go SDK: https://github.com/octaspace/go-sdk
+- Ruby SDK: https://github.com/octaspace/ruby-sdk
+- CLI (`octa`): https://github.com/octaspace/octa-cli — inspect accounts, rent machines,
+  manage sessions, connect via VPN relays.
+- Node software (`orc`): https://github.com/octaspace/orc — turn hardware into an
+  OctaSpace service node.
+
+## Quick start (JS SDK)
+
+```ts
+import { OctaClient } from '@octaspace/sdk'
+
+const client = new OctaClient({ apiKey: process.env.OCTA_API_KEY })
+const nodes = await client.nodes.list()
+```
+
+## Note
+
+This is a community-maintained summary for AI assistants. For authoritative protocol
+details (staking, eras, rewards), see https://docs.octa.space/ and the whitepaper at
+https://github.com/octaspace/whitepaper.github.io.
