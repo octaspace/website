@@ -8,7 +8,7 @@ import {
   FooterBottom,
   FooterContent,
 } from "../../ui/footer";
-import LaunchUI from "../../logos/launch-ui";
+import OctaLogo from "../../logos/octa";
 
 interface FooterLink {
   text: string;
@@ -31,37 +31,39 @@ interface FooterProps {
 }
 
 export default function FooterSection({
-  logo = <LaunchUI />,
-  name = "Launch UI",
+  logo = <OctaLogo className="h-8 w-auto" />,
+  name = "OctaSpace",
   columns = [
     {
       title: "Product",
       links: [
-        { text: "Changelog", href: "https://www.launchuicomponents.com/" },
-        { text: "Documentation", href: "https://www.launchuicomponents.com/" },
+        { text: "OctaRender", href: "https://render.octa.space/" },
+        { text: "Marketplace", href: "https://cube.octa.computer/marketplace/compute" },
+        { text: "OctaSpace Cube", href: "https://cube.octa.computer/" },
+        { text: "Documentation", href: "https://docs.octa.space/" },
       ],
     },
     {
       title: "Company",
       links: [
-        { text: "About", href: "https://www.launchuicomponents.com/" },
-        { text: "Careers", href: "https://www.launchuicomponents.com/" },
-        { text: "Blog", href: "https://www.launchuicomponents.com/" },
+        { text: "Privacy Policy", href: "/privacy" },
+        { text: "Blog", href: "https://blog.octa.space/" },
+        { text: "Contact", href: "mailto:hello@octa.space" },
       ],
     },
     {
       title: "Contact",
       links: [
-        { text: "Discord", href: "https://www.launchuicomponents.com/" },
-        { text: "Twitter", href: "https://www.launchuicomponents.com/" },
-        { text: "Github", href: "https://www.launchuicomponents.com/" },
+        { text: "Discord", href: "https://discord.gg/octaspace" },
+        { text: "X", href: "https://x.com/octa_space" },
+        { text: "GitHub", href: "https://github.com/octaspace" },
       ],
     },
   ],
-  copyright = "© 2025 Mikołaj Dobrucki. All rights reserved",
+  copyright = "© 2025 OctaSpace. All rights reserved.",
   policies = [
-    { text: "Privacy Policy", href: "https://www.launchuicomponents.com/" },
-    { text: "Terms of Service", href: "https://www.launchuicomponents.com/" },
+    { text: "Privacy Policy", href: "/privacy" },
+    { text: "Terms of Service", href: "https://docs.octa.space/" },
   ],
   showModeToggle = true,
   className,
