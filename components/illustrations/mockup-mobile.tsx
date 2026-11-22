@@ -15,8 +15,7 @@ function MockupMobileIllustration() {
       >
         <Mockup type="mobile">
           <Screenshot
-            srcLight="/img/VPN.jpg"
-            srcDark="/img/VPN.jpg"
+            src="/img/VPN.jpg"
             alt="Launch UI app screenshot"
             width={350}
             height={765}

@@ -8,11 +8,8 @@
 - **React** `19.1.1` / **React DOM** `19.1.1`
 - **TypeScript** `^5`
 - **Tailwind CSS** `^4.0.12` (конфигурация через CSS `@theme`, без `tailwind.config.ts`)
-- **Radix UI** — accordion, avatar, dialog, dropdown, navigation-menu, select, switch, tabs, tooltip и др.
+- **Radix UI**: dialog (мобильное меню), tabs, slot
 - **shadcn/ui** (стиль `new-york`, база `zinc`)
-- **motion** (Framer Motion) — анимации
-- **embla-carousel-react** — карусели
-- **next-themes** — переключение темы (в проекте принудительно включена тёмная тема)
 - **lucide-react** — иконки
 - **next-sitemap** — генерация `sitemap.xml` и `robots.txt`
 
@@ -68,17 +65,24 @@ cd out && python3 -m http.server 8000
 npm run lint
 ```
 
+## Данные сети
+
+Цифры и цены берутся из публичного API платформы (`https://api.octa.space`, сервис oas):
+`GET /network` (GPU, ноды, страны, TFLOPS, пользователи, отрендеренные кадры) и
+`GET /stats/gpu/current` (цены за GPU-час по моделям, в micro-USD). Запрос идёт при сборке и
+ещё раз в браузере при открытии страницы, при ошибке показываются заглушки
+(`lib/octa-network.ts`).
+
 ## Структура проекта
 
 ```text
 app/                    # Страницы (App Router): главная, privacy и т.д.
 components/
-  sections/             # Секции лендинга по категориям (hero, feature, pricing, navbar, footer, ...),
-                         # внутри каждой — несколько взаимозаменяемых вариантов оформления
+  sections/             # Секции лендинга по категориям (hero, feature, pricing, navbar, footer, ...)
   ui/                    # Переиспользуемые примитивы (Section, Mockup, Navbar, PricingColumn и др.)
   illustrations/         # Декоративные SVG-иллюстрации
   logos/                 # Логотипы (бренды, соцсети)
-config/site.ts          # Общие метаданные сайта (название, URL, соцссылки)
+config/site.ts          # Метаданные сайта, URL API, ссылки на console.octa.space и соцсети
 lib/                    # Утилиты, включая получение live-данных сети OctaSpace
 styles/                 # Глобальные стили и тема (CSS custom properties, OKLCH-палитры)
 public/                 # Статические ассеты (изображения, видео, favicon)

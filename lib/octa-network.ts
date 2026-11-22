@@ -1,22 +1,37 @@
 import type { PricingColumnProps } from "@/components/ui/pricing-column";
+import { siteConfig } from "@/config/site";
 
 export interface StatItem {
-  label?: string;
-  value: string | number;
-  suffix?: string;
-  description?: string;
+  label: string;
+  value: string;
+  description: string;
 }
 
 export interface OctaNetworkSnapshot {
   statsItems: StatItem[];
   stats2Items: StatItem[];
-  plans: NetworkPricingPlan[];
+  plans: PricingColumnProps[];
 }
 
-export interface NetworkPricingPlan extends PricingColumnProps {
-  priority?: number;
+// `GET /network` of the public API (oas `OasWeb.Schemas.Network`), the fields used here.
+interface NetworkResponse {
+  nodes: { online: number; countries: number };
+  power: { gpus: number; tflops: number };
+  users: { total: number };
+  render: { frames_total: number };
 }
 
+// `GET /stats/gpu/current` (oas `OasWeb.Schemas.GpuCurrent`). Prices are
+// micro-USD per GPU-hour, null where there is nothing to take them of.
+interface GpuCurrentResponse {
+  gpus: {
+    model: string;
+    available: number;
+    available_price: { p10: number | null; p50: number | null };
+  }[];
+}
+
+// Shown first, in this order; the rest by GPUs available.
 const gpuPriority: Record<string, number> = {
   "NVIDIA H100 80GB HBM3": 100,
   "NVIDIA A100-SXM4-40GB": 99,
@@ -60,113 +75,107 @@ export const fallbackOctaNetworkSnapshot: OctaNetworkSnapshot = {
       description: "Decentralized compute locations",
     },
     {
-      value: "Flexible",
-      label: "Compute Sessions Launched",
-      description: "Containers, VMs, AI apps, and render jobs",
+      value: "Distributed",
+      label: "Frames Rendered",
+      description: "Rendering across the global network",
     },
   ],
   plans: [],
 };
 
-export function normalizeOctaNetworkData(data: any): OctaNetworkSnapshot {
-  const statsItems: StatItem[] = [
-    {
-      value: data.power?.gpus?.toString() || fallbackOctaNetworkSnapshot.statsItems[0].value,
-      label: "Total GPUs:",
-      description: "Available for Rent",
-    },
-    {
-      value: data.nodes?.count?.toString() || fallbackOctaNetworkSnapshot.statsItems[1].value,
-      label: "Total nodes:",
-      description: "Offering Compute Power",
-    },
-    {
-      value: data.platform?.users?.toString() || fallbackOctaNetworkSnapshot.statsItems[2].value,
-      label: "Registered users:",
-      description: "Users & Growing",
-    },
-  ];
+const formatCount = (n: number) => Math.round(n).toLocaleString("en-US");
 
-  const stats2Items: StatItem[] = [
-    {
-      value: Math.round(data.power?.tflops || 0).toString(),
-      label: "Raw Power Unleashed",
-      description: "Global TFLOPS on Demand",
-    },
-    {
-      value: data.nodes?.locations?.toString() || fallbackOctaNetworkSnapshot.stats2Items[1].value,
-      label: "Global Reach",
-      description: "Decentralized Locations",
-    },
-    {
-      value:
-        data.marketplace?.total_sessions?.toString() ||
-        fallbackOctaNetworkSnapshot.stats2Items[2].value,
-      label: "Compute Sessions Launched",
-      description: "Sessions",
-    },
-  ];
-
-  const plans: NetworkPricingPlan[] = Object.entries(data.marketplace?.gpus || {})
-    .map(([gpuName, gpuData]: [string, any]) => {
-      const cleanName = gpuName
-        .replace(/NVIDIA\s*/g, "")
-        .replace(/GeForce\s*/g, "")
-        .trim();
-
-      return {
-        name: cleanName,
-        description: `${gpuData.count} available`,
-        price: gpuData.avg_price,
-        priceNote: "per hour",
-        features: [
-          `Average price: ${gpuData.avg_price} $/hr`,
-          `Available count: ${gpuData.count}`,
-          "Flexible rental terms",
-          "Global GPU marketplace",
-        ],
-        cta: {
-          label: "Rent now",
-          href: "https://cube.octa.computer/marketplace/compute",
-          variant: "glow" as const,
-        },
-        variant: "default" as const,
-        priority: gpuPriority[gpuName] || 0,
-      };
+function toPlans(gpus: GpuCurrentResponse["gpus"]): PricingColumnProps[] {
+  return gpus
+    .flatMap((gpu) => {
+      const price = gpu.available_price.p10 ?? gpu.available_price.p50;
+      return gpu.available > 0 && price ? [{ ...gpu, price }] : [];
     })
-    .sort((a, b) => {
-      const priorityA = typeof a.priority === "number" ? a.priority : 0;
-      const priorityB = typeof b.priority === "number" ? b.priority : 0;
+    .sort(
+      (a, b) =>
+        (gpuPriority[b.model] ?? 0) - (gpuPriority[a.model] ?? 0) ||
+        b.available - a.available,
+    )
+    .map((gpu) => ({
+      name: gpu.model.replace(/NVIDIA\s*|GeForce\s*/g, "").trim(),
+      description: `${gpu.available} available`,
+      price: (gpu.price / 1_000_000).toFixed(2),
+      priceNote: "per hour",
+      cta: {
+        label: "Rent now",
+        href: siteConfig.console.compute,
+        variant: "glow" as const,
+      },
+    }));
+}
 
-      if (priorityB === priorityA) {
-        const countA = parseInt(a.features?.[1]?.match(/\d+/)?.[0] || "0");
-        const countB = parseInt(b.features?.[1]?.match(/\d+/)?.[0] || "0");
-        return countB - countA;
-      }
+function normalizeOctaNetworkData(
+  network: NetworkResponse,
+  gpus: GpuCurrentResponse,
+): OctaNetworkSnapshot {
+  return {
+    statsItems: [
+      {
+        value: formatCount(network.power.gpus),
+        label: "Total GPUs:",
+        description: "Online in the network",
+      },
+      {
+        value: formatCount(network.nodes.online),
+        label: "Total nodes:",
+        description: "Offering Compute Power",
+      },
+      {
+        value: formatCount(network.users.total),
+        label: "Registered users:",
+        description: "Users & Growing",
+      },
+    ],
+    stats2Items: [
+      {
+        value: formatCount(network.power.tflops),
+        label: "Raw Power Unleashed",
+        description: "Global TFLOPS on Demand",
+      },
+      {
+        value: formatCount(network.nodes.countries),
+        label: "Global Reach",
+        description: "Countries",
+      },
+      {
+        value: formatCount(network.render.frames_total),
+        label: "Frames Rendered",
+        description: "By OctaRender",
+      },
+    ],
+    plans: toPlans(gpus.gpus),
+  };
+}
 
-      return priorityB - priorityA;
-    });
+async function fetchJson<T>(path: string, signal: AbortSignal): Promise<T> {
+  const response = await fetch(`${siteConfig.apiUrl}${path}`, { signal });
 
-  return { statsItems, stats2Items, plans };
+  if (!response.ok) {
+    throw new Error(`${path} responded with ${response.status}`);
+  }
+
+  return response.json();
 }
 
 export async function getOctaNetworkSnapshot(): Promise<OctaNetworkSnapshot> {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 5000);
+
   try {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 5000);
+    const [network, gpus] = await Promise.all([
+      fetchJson<NetworkResponse>("/network", controller.signal),
+      fetchJson<GpuCurrentResponse>("/stats/gpu/current", controller.signal),
+    ]);
 
-    const response = await fetch("https://api.octa.computer/network", {
-      signal: controller.signal,
-    });
-
-    clearTimeout(timeout);
-
-    if (!response.ok) {
-      throw new Error(`Octa network API responded with ${response.status}`);
-    }
-
-    return normalizeOctaNetworkData(await response.json());
+    return normalizeOctaNetworkData(network, gpus);
   } catch {
     return fallbackOctaNetworkSnapshot;
+  } finally {
+    clearTimeout(timeout);
   }
 }

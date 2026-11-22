@@ -21,8 +21,7 @@ function MockupResponsiveTopIllustration({
         >
           <Mockup type="responsive">
             <Screenshot
-              srcLight="/img/render2.png"
-              srcDark="/img/render2.png"
+              src="/img/render2.png"
               alt="Launch UI app screenshot"
               width={1340}
               height={820}

@@ -2,11 +2,22 @@ import "@/app/globals.css";
 
 import type { Metadata } from "next";
 import Script from "next/script";
+import type { CSSProperties } from "react";
 
-import { ThemeProvider } from "@/components/contexts/theme-provider";
+import Footer from "@/components/sections/footer/5-columns";
+import Navbar from "@/components/sections/navbar/sticky";
+import { siteConfig } from "@/config/site";
 import { inter } from "@/lib/fonts";
 
-import { siteConfig } from "../config/site";
+// Maps the semantic theme variables to the `octa` brand (styles/theme.css).
+const octaBrand = {
+  "--brand-foreground": "var(--brand-octa-foreground)",
+  "--brand": "var(--brand-octa)",
+  "--primary": "light-dark(var(--brand-octa), oklch(0.985 0 0))",
+  "--background": "var(--background-octa)",
+  "--muted": "var(--background-titanium)",
+  "--radius": "var(--radius-default)",
+} as CSSProperties;
 
 export const metadata: Metadata = {
   title: {
@@ -90,13 +101,14 @@ export default function RootLayout({
     url: "https://octa.space/",
     logo: "https://octa.space/og.jpg",
     sameAs: [
-      "https://x.com/octa_space",
-      "https://t.me/octa_space",
-      "https://discord.gg/octaspace",
-      "https://github.com/octaspace",
-      "https://reddit.com/r/octaspace",
-      "https://blog.octa.space/",
-      "https://www.instagram.com/octaspace.official",
+      siteConfig.links.x,
+      siteConfig.links.telegram,
+      siteConfig.links.discord,
+      siteConfig.links.github,
+      siteConfig.links.reddit,
+      siteConfig.links.blog,
+      siteConfig.links.youtube,
+      siteConfig.links.instagram,
     ],
     contactPoint: {
       "@type": "ContactPoint",
@@ -128,7 +140,7 @@ export default function RootLayout({
             gtag('config', 'G-CQJXWVFMH5');
           `}
         </Script>
-        
+
         <script
           id="json-ld-organization"
           type="application/ld+json"
@@ -142,7 +154,11 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
 
-        <ThemeProvider>{children}</ThemeProvider>
+        <div className="flex min-h-screen flex-col" style={octaBrand}>
+          <Navbar />
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );

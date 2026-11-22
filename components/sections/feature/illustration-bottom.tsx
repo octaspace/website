@@ -2,19 +2,18 @@ import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 import { Section } from "../../ui/section";
-import RisingIllustration from "../../illustrations/rising-large";
 
 interface FeatureIllustrationBottomProps {
-  title?: string;
-  description?: string;
-  visual?: ReactNode;
+  title: string;
+  description: string;
+  visual: ReactNode;
   className?: string;
 }
 
 export default function FeatureIllustrationBottom({
-  title = "You can change anything. But you don't have to.",
-  description = "Get the full control of the code of your website. Change it or just use the defaults. Customize it in seconds with CSS variables.",
-  visual = <RisingIllustration />,
+  title,
+  description,
+  visual,
   className,
 }: FeatureIllustrationBottomProps) {
   return (

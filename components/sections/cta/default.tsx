@@ -14,29 +14,19 @@ interface CTAButtonProps {
 }
 
 interface CTAProps {
-  title?: string;
-  buttons?: CTAButtonProps[] | false;
+  title: string;
+  buttons: CTAButtonProps[];
   className?: string;
 }
 
-export default function CTA({
-  title = "Start building",
-  buttons = [
-    {
-      href: "https://www.launchuicomponents.com/",
-      text: "Get Started",
-      variant: "default",
-    },
-  ],
-  className,
-}: CTAProps) {
+export default function CTA({ title, buttons, className }: CTAProps) {
   return (
     <Section className={cn("group relative overflow-hidden", className)}>
       <div className="max-w-container relative z-10 mx-auto flex flex-col items-center gap-6 text-center sm:gap-8">
         <h2 className="max-w-[640px] text-3xl leading-tight font-semibold sm:text-5xl sm:leading-tight">
           {title}
         </h2>
-        {buttons !== false && buttons.length > 0 && (
+        {buttons.length > 0 && (
           <div className="flex justify-center gap-4">
             {buttons.map((button, index) => (
               <Button

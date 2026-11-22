@@ -1,37 +1,24 @@
 import { ReactNode } from "react";
+
 import { cn } from "@/lib/utils";
 
 import { Beam } from "../../ui/beam";
 import Screenshot from "../../ui/screenshot";
 import { Section } from "../../ui/section";
 
-
 interface FeatureStickyLeftProps {
-  title?: string;
-  description?: ReactNode;
-  visual?: ReactNode;
-  imageLight?: string;
-  imageDark?: string;
+  title: string;
+  description: ReactNode;
+  image: string;
+  imageAlt: string;
   className?: string;
 }
 
 export default function FeatureStickyLeft({
-  title = "Everything you need at your fingertips",
-  description = (
-    <>
-      <p>
-        A comprehensive collection of components written in modern React,
-        Typescript and Tailwind CSS.
-      </p>
-      <p>
-        You&apos;ll find here everything you need to build your next landing
-        page.
-      </p>
-    </>
-  ),
-  visual,
-  imageLight = "/../img/phone.png",
-  imageDark = "/img/phone.png",
+  title,
+  description,
+  image,
+  imageAlt,
   className,
 }: FeatureStickyLeftProps) {
   return (
@@ -51,21 +38,18 @@ export default function FeatureStickyLeft({
           </div>
         </div>
         <div className="relative z-10 max-w-[320px] md:max-w-[320px]">
-          {visual || (
-            <Beam
-              tone="brandLight"
-              className="after:scale-y-150 md:after:-translate-x-1/2"
-            >
-              <Screenshot
-                srcLight={imageLight}
-                srcDark={imageDark}
-                alt="Launch UI app screenshot"
-                width={900}
-                height={1840}
-                className="relative z-10"
-              />
-            </Beam>
-          )}
+          <Beam
+            tone="brandLight"
+            className="after:scale-y-150 md:after:-translate-x-1/2"
+          >
+            <Screenshot
+              src={image}
+              alt={imageAlt}
+              width={900}
+              height={1840}
+              className="relative z-10"
+            />
+          </Beam>
         </div>
       </div>
     </Section>

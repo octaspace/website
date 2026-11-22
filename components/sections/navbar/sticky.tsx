@@ -1,104 +1,40 @@
-import { ReactNode } from "react";
-import { cn } from "@/lib/utils";
 import { Menu } from "lucide-react";
 
-import { Button, type ButtonProps } from "../../ui/button";
+import { siteConfig } from "@/config/site";
+
+import OctaLogo from "../../logos/octa";
+import { Button } from "../../ui/button";
 import {
   Navbar as NavbarComponent,
   NavbarLeft,
   NavbarRight,
 } from "../../ui/navbar";
 import { Sheet, SheetContent, SheetTrigger } from "../../ui/sheet";
-import LaunchUI from "../../logos/launch-ui";
 
-interface NavbarLink {
-  text: string;
-  href: string;
-}
+const name = "OctaSpace";
 
-interface NavbarActionProps {
-  text: string;
-  href: string;
-  variant?: ButtonProps["variant"];
-  icon?: ReactNode;
-  iconRight?: ReactNode;
-  isButton?: boolean;
-}
+const mobileLinks = [
+  { text: "Get Started", href: siteConfig.console.compute },
+  { text: "Documentation", href: siteConfig.links.docs },
+  { text: "OctaRender", href: siteConfig.links.render },
+  { text: "OctaSpace Console", href: siteConfig.console.home },
+];
 
-interface NavbarProps {
-  logo?: ReactNode;
-  name?: string;
-  homeUrl?: string;
-  mobileLinks?: NavbarLink[];
-  actions?: NavbarActionProps[];
-  className?: string;
-}
-
-export default function Navbar({
-  logo = <LaunchUI />,
-  name = "Launch UI",
-  homeUrl = "https://octa.space/",
-  mobileLinks = [
-    { text: "Get Started", href: "https://cube.octa.computer/marketplace/compute" },
-    { text: "Documentation", href: "https://docs.octa.space/" },
-    { text: "OctaSpace Marketplace", href: "https://cube.octa.computer/marketplace/compute" },
-    { text: "OctaRender", href: "https://render.octa.computer/" },
-    { text: "OctaSpace Cube", href: "https://cube.octa.computer" },
-
-  ],
-  actions = [
-    { text: "Sign in", href: "#", isButton: false },
-    {
-      text: "Get Started",
-      href: "#",
-      isButton: true,
-      variant: "default",
-    },
-  ],
-  className,
-}: NavbarProps) {
+export default function Navbar() {
   return (
-    <header
-      className={cn(
-        "fade-bottom sticky top-0 z-50 px-4 pb-1 backdrop-blur-lg",
-        className,
-      )}
-    >
+    <header className="fade-bottom sticky top-0 z-50 px-4 pb-1 backdrop-blur-lg">
       <div className="max-w-container mx-auto">
         <NavbarComponent>
           <NavbarLeft>
-            <a
-              href={homeUrl}
-              className="flex items-center gap-2 text-xl font-bold"
-            >
-              {logo}
+            <a href="/" className="flex items-center gap-2 text-xl font-bold">
+              <OctaLogo className="h-8 w-auto" />
               {name}
             </a>
           </NavbarLeft>
           <NavbarRight>
-            {actions.map((action, index) =>
-              action.isButton ? (
-                <Button
-                  key={index}
-                  variant={action.variant || "default"}
-                  asChild
-                >
-                  <a href={action.href}>
-                    {action.icon}
-                    {action.text}
-                    {action.iconRight}
-                  </a>
-                </Button>
-              ) : (
-                <a
-                  key={index}
-                  href={action.href}
-                  className="hidden text-sm md:block"
-                >
-                  {action.text}
-                </a>
-              ),
-            )}
+            <Button variant="outline" asChild>
+              <a href={siteConfig.console.compute}>Get Started</a>
+            </Button>
             <Sheet>
               <SheetTrigger asChild>
                 <Button
@@ -113,14 +49,14 @@ export default function Navbar({
               <SheetContent side="right">
                 <nav className="grid gap-6 text-lg font-medium">
                   <a
-                    href={homeUrl}
+                    href="/"
                     className="flex items-center gap-2 text-xl font-bold"
                   >
                     <span>{name}</span>
                   </a>
-                  {mobileLinks.map((link, index) => (
+                  {mobileLinks.map((link) => (
                     <a
-                      key={index}
+                      key={link.text}
                       href={link.href}
                       className="text-muted-foreground hover:text-foreground"
                     >

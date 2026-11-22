@@ -1,88 +1,46 @@
 import { cn } from "@/lib/utils";
+
+import Glow from "../../ui/glow";
+import {
+  PricingColumn,
+  type PricingColumnProps,
+} from "../../ui/pricing-column";
 import { Section } from "../../ui/section";
-import { PricingColumn, PricingColumnProps } from "../../ui/pricing-column";
-import Glow from "../../ui/glow"; // import the glow component
 
 interface PricingProps {
-  title?: string | false;
-  description?: string | false;
-  plans?: PricingColumnProps[] | false;
+  title: string;
+  description: string;
+  plans: PricingColumnProps[];
   className?: string;
 }
 
 export default function Pricing({
-  title = "Build your dream landing page, today.",
-  description = "Simple, transparent pricing for everyone.",
-  plans = [
-    {
-      name: "Free",
-      description: "Perfect for starting out",
-      price: 0,
-      priceNote: "",
-      features: [],
-      cta: { variant: "outline", label: "Get started", href: "/docs/getting-started/introduction" },
-      variant: "glow",
-      className: "",
-    },
-    {
-      name: "Pro",
-      description: "For early-stage founders",
-      price: 99,
-      priceNote: "",
-      features: [],
-      cta: { variant: "outline", label: "Get all-access", href: "https://www.launchuicomponents.com/" },
-      variant: "glow-brand",
-      className: "",
-    },
-    {
-      name: "Pro Team",
-      description: "For teams and agencies",
-      price: 499,
-      priceNote: "",
-      features: [],
-      cta: { variant: "outline", label: "Get all-access for team", href: "https://www.launchuicomponents.com/" },
-      variant: "glow",
-      className: "",
-    },
-  ],
-  className = "",
+  title,
+  description,
+  plans,
+  className,
 }: PricingProps) {
   return (
     <Section className={cn(className, "relative overflow-hidden")}>
       {/* Glow behind the pricing cards */}
-      <Glow variant="center" className="absolute top-2/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] opacity-20" />
+      <Glow
+        variant="center"
+        className="absolute top-2/2 left-1/2 h-[60%] w-[60%] -translate-x-1/2 -translate-y-1/2 opacity-20"
+      />
 
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 relative z-10">
-        {(title || description) && (
-          <div className="flex flex-col items-center gap-2 px-4 text-center">
-            {title && (
-              <h2 className="text-2xl font-semibold sm:text-3xl">{title}</h2>
-            )}
-            {description && (
-              <p className="text-sm text-muted-foreground max-w-[600px] sm:text-md">
-                {description}
-              </p>
-            )}
-          </div>
-        )}
+      <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center gap-8">
+        <div className="flex flex-col items-center gap-2 px-4 text-center">
+          <h2 className="text-2xl font-semibold sm:text-3xl">{title}</h2>
+          <p className="text-muted-foreground sm:text-md max-w-[600px] text-sm">
+            {description}
+          </p>
+        </div>
 
-        {plans !== false && plans.length > 0 && (
-          <div className="max-w-container mx-auto grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {plans.map((plan) => (
-              <PricingColumn
-                key={plan.name}
-                name={plan.name}
-                description={plan.description}
-                price={plan.price}
-                priceNote={plan.priceNote || ""}
-                features={plan.features || []}
-                cta={plan.cta}
-                variant={plan.variant}
-                className={plan.className}
-              />
-            ))}
-          </div>
-        )}
+        <div className="max-w-container mx-auto grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          {plans.map((plan) => (
+            <PricingColumn key={plan.name} {...plan} />
+          ))}
+        </div>
       </div>
     </Section>
   );

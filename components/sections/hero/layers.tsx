@@ -1,31 +1,24 @@
 import { ReactNode } from "react";
-import Link from "next/link";
+
+import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
 import { Button, type ButtonProps } from "../../ui/button";
-import { Section } from "../../ui/section";
-import Github from "../../logos/github";
 import Glow from "../../ui/glow";
 import { Mockup, MockupFrame } from "../../ui/mockup";
-import { SocialStats } from "../../ui/social-stats";
-import { Badge } from "../../ui/badge";
-import { ArrowRightIcon } from "lucide-react";
 import Screenshot from "../../ui/screenshot";
+import { Section } from "../../ui/section";
 
 interface HeroButtonProps {
   href: string;
   text: string;
   variant?: ButtonProps["variant"];
-  icon?: ReactNode;
-  iconRight?: ReactNode;
 }
 
 interface HeroLayersProps {
-  title?: string;
-  description?: string;
-  badge?: ReactNode | false;
+  title: string;
+  description: string;
   buttons?: HeroButtonProps[] | false;
-  extraContent?: ReactNode | false;
   className?: string;
   mockups?:
     | {
@@ -37,34 +30,20 @@ interface HeroLayersProps {
 }
 
 export default function Hero({
-  title = "Give your big idea the design it deserves",
-  description = "Professionally designed blocks and templates built with React, Shadcn/ui and Tailwind that will help your product stand out.",
-  badge = (
-    <Badge variant="outline" className="animate-appear">
-      <span className="text-muted-foreground">Launch UI v2 is out!</span>
-      <Link
-        href="/docs/getting-started/tailwind-v4"
-        className="flex items-center gap-1"
-      >
-        Read more
-        <ArrowRightIcon className="size-3" />
-      </Link>
-    </Badge>
-  ),
+  title,
+  description,
   buttons = [
     {
-      href: "https://cube.octa.computer/marketplace/compute",
+      href: siteConfig.console.compute,
       text: "Get Started",
       variant: "glow",
     },
   ],
-
   className,
   mockups = {
     left: (
       <Screenshot
-        srcLight="/img/VPNmarket.png"
-        srcDark="/img/VPNmarket.png"
+        src="/img/VPNmarket.png"
         alt="OctaVPN marketplace screenshot"
         width={1248}
         height={765}
@@ -72,8 +51,7 @@ export default function Hero({
     ),
     center: (
       <Screenshot
-        srcLight="/img/nodes.png"
-        srcDark="/img/nodes.png"
+        src="/img/nodes.png"
         alt="OctaSpace node marketplace screenshot"
         width={1248}
         height={765}
@@ -81,8 +59,7 @@ export default function Hero({
     ),
     right: (
       <Screenshot
-        srcLight="/img/marketplace1.png"
-        srcDark="/img/marketplace1.png"
+        src="/img/marketplace1.png"
         alt="OctaSpace application marketplace screenshot"
         width={1248}
         height={765}
@@ -99,7 +76,6 @@ export default function Hero({
     >
       <div className="max-w-container relative mx-auto flex flex-col gap-12 pt-1">
         <div className="relative z-10 flex flex-col items-start gap-6 sm:gap-8">
-         {/* {badge !== false && badge} */}
           <h1 className="animate-appear from-foreground to-foreground dark:to-muted-foreground inline-block max-w-[840px] bg-linear-to-r bg-clip-text text-4xl leading-tight font-semibold text-balance text-transparent drop-shadow-2xl sm:text-5xl sm:leading-tight lg:text-6xl lg:leading-tight">
             {title}
           </h1>
@@ -115,16 +91,11 @@ export default function Hero({
                   size="lg"
                   asChild
                 >
-                  <a href={button.href}>
-                    {button.icon}
-                    {button.text}
-                    {button.iconRight}
-                  </a>
+                  <a href={button.href}>{button.text}</a>
                 </Button>
               ))}
             </div>
           )}
-
         </div>
         {mockups !== false && (
           <div className="group relative sm:px-24">

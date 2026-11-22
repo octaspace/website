@@ -1,18 +1,9 @@
 "use client";
 
 import { ReactNode } from "react";
-import {
-  BlocksIcon,
-  PaletteIcon,
-  RocketIcon,
-  SquarePenIcon,
-} from "lucide-react";
-
 import { Section } from "../../ui/section";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui/tabs";
-import { Mockup, MockupFrame } from "../../ui/mockup";
 import Glow from "../../ui/glow";
-import Screenshot from "../../ui/screenshot";
 
 interface TabProps {
   value: string;
@@ -23,95 +14,18 @@ interface TabProps {
 }
 
 interface TabsTopProps {
-  title?: string;
-  description?: string;
-  tabs?: TabProps[] | false;
-  defaultTab?: string;
+  title: string;
+  description: string;
+  tabs: TabProps[];
+  defaultTab: string;
   className?: string;
 }
 
 export default function TabsTop({
-  title = "Make the right impression",
-  description = "Launch UI makes it easy to build an unforgetable website that resonates with professional design-centric audiences.",
-  defaultTab = "choose-sections",
-  tabs = [
-    {
-      value: "choose-sections",
-      title: "Choose your sections",
-      description: "Choose from 100+ components",
-      icon: <BlocksIcon className="size-5 stroke-1" />,
-      content: (
-        <MockupFrame size="small">
-          <Mockup type="responsive">
-            <Screenshot
-              srcLight="/app-light.png"
-              srcDark="/app-dark.png"
-              alt="Launch UI app screenshot"
-              width={1248}
-              height={765}
-            />
-          </Mockup>
-        </MockupFrame>
-      ),
-    },
-    {
-      value: "add-content",
-      title: "Add your content",
-      description: "Fill the blanks",
-      icon: <SquarePenIcon className="size-5 stroke-1" />,
-      content: (
-        <MockupFrame size="small">
-          <Mockup type="responsive">
-            <Screenshot
-              srcLight="/app-mail-light.png"
-              srcDark="/app-mail-dark.png"
-              alt="Launch UI app screenshot"
-              width={1248}
-              height={765}
-            />
-          </Mockup>
-        </MockupFrame>
-      ),
-    },
-    {
-      value: "customize",
-      title: "Customize",
-      description: "Make it yours",
-      icon: <PaletteIcon className="size-5 stroke-1" />,
-      content: (
-        <MockupFrame size="small">
-          <Mockup type="responsive">
-            <Screenshot
-              srcLight="/app-settings-light.png"
-              srcDark="/app-settings-dark.png"
-              alt="Launch UI app screenshot"
-              width={1248}
-              height={765}
-            />
-          </Mockup>
-        </MockupFrame>
-      ),
-    },
-    {
-      value: "deploy",
-      title: "Deploy",
-      description: "Deploy your website",
-      icon: <RocketIcon className="size-5 stroke-1" />,
-      content: (
-        <MockupFrame size="small">
-          <Mockup type="responsive">
-            <Screenshot
-              srcLight="/app-tasks-light.png"
-              srcDark="/app-tasks-dark.png"
-              alt="Launch UI app screenshot"
-              width={1248}
-              height={765}
-            />
-          </Mockup>
-        </MockupFrame>
-      ),
-    },
-  ],
+  title,
+  description,
+  defaultTab,
+  tabs,
   className,
 }: TabsTopProps) {
   return (
@@ -126,7 +40,7 @@ export default function TabsTop({
           </p>
         </div>
         <div className="w-full">
-          {tabs !== false && tabs.length > 0 && (
+          {tabs.length > 0 && (
             <Tabs
               defaultValue={defaultTab}
               className="flex flex-col items-start gap-4"
