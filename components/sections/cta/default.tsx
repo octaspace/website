@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { cn } from "@/lib/utils";
+import { cn, linkTarget } from "@/lib/utils";
 
 import { Section } from "../../ui/section";
 import { Button, type ButtonProps } from "../../ui/button";
@@ -35,7 +35,7 @@ export default function CTA({ title, buttons, className }: CTAProps) {
                 size="lg"
                 asChild
               >
-                <a href={button.href}>
+                <a href={button.href} {...linkTarget(button.href)}>
                   {button.icon}
                   {button.text}
                   {button.iconRight}

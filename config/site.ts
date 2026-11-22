@@ -18,6 +18,7 @@ export const siteConfig = {
   links: {
     docs: "https://docs.octa.space/",
     privacy: "https://docs.octa.space/privacy-policy",
+    terms: "https://docs.octa.space/terms-and-conditions",
     blog: "https://blog.octa.space/",
     email: "mailto:hello@octa.space",
     support:

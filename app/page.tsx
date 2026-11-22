@@ -42,6 +42,7 @@ import { Mockup, MockupFrame } from "@/components/ui/mockup";
 import Screenshot from "@/components/ui/screenshot";
 import { siteConfig } from "@/config/site";
 import { getOctaNetworkSnapshot } from "@/lib/octa-network";
+import { linkTarget } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "OctaSpace - Decentralized GPU Cloud, AI & Compute Platform",
@@ -407,6 +408,7 @@ export default async function HomePage() {
                 </p>
                 <a
                   href={siteConfig.console.render}
+                  {...linkTarget(siteConfig.console.render)}
                   className="text-foreground inline-block underline-offset-6 hover:underline"
                   style={{ lineHeight: "1.5" }}
                 >

@@ -1,6 +1,7 @@
 import { Menu } from "lucide-react";
 
 import { siteConfig } from "@/config/site";
+import { linkTarget } from "@/lib/utils";
 
 import OctaLogo from "../../logos/octa";
 import { Button } from "../../ui/button";
@@ -33,7 +34,12 @@ export default function Navbar() {
           </NavbarLeft>
           <NavbarRight>
             <Button variant="outline" asChild>
-              <a href={siteConfig.console.compute}>Get Started</a>
+              <a
+                href={siteConfig.console.compute}
+                {...linkTarget(siteConfig.console.compute)}
+              >
+                Get Started
+              </a>
             </Button>
             <Sheet>
               <SheetTrigger asChild>
@@ -58,6 +64,7 @@ export default function Navbar() {
                     <a
                       key={link.text}
                       href={link.href}
+                      {...linkTarget(link.href)}
                       className="text-muted-foreground hover:text-foreground"
                     >
                       {link.text}

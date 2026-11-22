@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import type { CSSProperties } from "react";
 
-import Footer from "@/components/sections/footer/5-columns";
+import Footer from "@/components/sections/footer/default";
 import Navbar from "@/components/sections/navbar/sticky";
 import { siteConfig } from "@/config/site";
 import { inter } from "@/lib/fonts";

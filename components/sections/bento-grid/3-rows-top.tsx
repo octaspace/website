@@ -1,5 +1,7 @@
 import { ReactNode } from "react";
 
+import { linkTarget } from "@/lib/utils";
+
 import {
   Tile,
   TileVisual,
@@ -45,7 +47,9 @@ export default function BentoGrid({
           <div className="grid grid-cols-12 gap-4">
             {tiles.map((tile, index) => (
               <Tile key={index} className={tile.size}>
-                {tile.href && <TileLink href={tile.href} />}
+                {tile.href && (
+                  <TileLink href={tile.href} {...linkTarget(tile.href)} />
+                )}
                 <TileContent>
                   {tile.icon && tile.icon}
                   <TileTitle>{tile.title}</TileTitle>

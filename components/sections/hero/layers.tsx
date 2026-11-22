@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 import { siteConfig } from "@/config/site";
-import { cn } from "@/lib/utils";
+import { cn, linkTarget } from "@/lib/utils";
 
 import { Button, type ButtonProps } from "../../ui/button";
 import Glow from "../../ui/glow";
@@ -91,7 +91,9 @@ export default function Hero({
                   size="lg"
                   asChild
                 >
-                  <a href={button.href}>{button.text}</a>
+                  <a href={button.href} {...linkTarget(button.href)}>
+                    {button.text}
+                  </a>
                 </Button>
               ))}
             </div>

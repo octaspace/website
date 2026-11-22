@@ -25,7 +25,7 @@ Node/GPU imagery/video assets live in `public/img/` (mp4s, screenshots) and are 
 
 `components/sections/*` is organized by **section category** (`hero/`, `feature/`, `bento-grid/`, `pricing/`, `navbar/`, `footer/`, `cta/`, `tabs/`, `stats/`, `items/`). The Launch UI template shipped several interchangeable variants per category; only the ones the site uses are kept (the rest were deleted, recover them from git history or the Launch UI template if a new look is wanted). Sections take their content as required props from `app/page.tsx`; they carry no placeholder defaults.
 
-`app/layout.tsx` renders the shared chrome for every page: the `octa` brand wrapper, `Navbar` (`navbar/sticky`) and `Footer` (`footer/5-columns`). Pages render only their `<main>`.
+`app/layout.tsx` renders the shared chrome for every page: the `octa` brand wrapper, `Navbar` (`navbar/sticky`) and `Footer` (`footer/default`). Pages render only their `<main>`.
 
 All outbound URLs (console, docs, render, socials) and the API base live in `config/site.ts` (`siteConfig.console.*`, `siteConfig.links.*`, `siteConfig.apiUrl`). The user panel is `https://console.octa.space` (was `cube.octa.computer`); OctaRender links go to `console.octa.space/render` too, not to the old `render.octa.space` landing.
 

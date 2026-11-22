@@ -1,7 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import Link from "next/link";
 
-import { cn } from "@/lib/utils";
+import { cn, linkTarget } from "@/lib/utils";
 
 import { Button, type ButtonProps } from "./button";
 
@@ -71,7 +70,9 @@ export function PricingColumn({
         </div>
 
         <Button variant={cta.variant} size="lg" asChild>
-          <Link href={cta.href}>{cta.label}</Link>
+          <a href={cta.href} {...linkTarget(cta.href)}>
+            {cta.label}
+          </a>
         </Button>
       </div>
     </div>
