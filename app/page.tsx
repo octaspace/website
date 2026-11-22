@@ -406,7 +406,7 @@ export default async function HomePage() {
                   simplicity in mind.
                 </p>
                 <a
-                  href={siteConfig.links.render}
+                  href={siteConfig.console.render}
                   className="text-foreground inline-block underline-offset-6 hover:underline"
                   style={{ lineHeight: "1.5" }}
                 >

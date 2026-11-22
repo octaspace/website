@@ -27,7 +27,7 @@ Node/GPU imagery/video assets live in `public/img/` (mp4s, screenshots) and are 
 
 `app/layout.tsx` renders the shared chrome for every page: the `octa` brand wrapper, `Navbar` (`navbar/sticky`) and `Footer` (`footer/5-columns`). Pages render only their `<main>`.
 
-All outbound URLs (console, docs, render, socials) and the API base live in `config/site.ts` (`siteConfig.console.*`, `siteConfig.links.*`, `siteConfig.apiUrl`). The user panel is `https://console.octa.space` (was `cube.octa.computer`); OctaRender's own landing stays at `render.octa.space`.
+All outbound URLs (console, docs, render, socials) and the API base live in `config/site.ts` (`siteConfig.console.*`, `siteConfig.links.*`, `siteConfig.apiUrl`). The user panel is `https://console.octa.space` (was `cube.octa.computer`); OctaRender links go to `console.octa.space/render` too, not to the old `render.octa.space` landing.
 
 `components/ui/*` holds the shared primitives these sections are built from (`Mockup`/`MockupFrame`, `Screenshot`, `Section`, `Navbar`, `PricingColumn`, `Tile`, etc.), plus shadcn/ui-style primitives (`button`, `sheet`, `tabs`). `components.json` configures shadcn (`style: new-york`, base color `zinc`, no class prefix); use `npx shadcn` conventions if adding new primitives.
 
@@ -47,7 +47,7 @@ Pages/sections opt into a brand palette by overriding the semantic variables (`-
 
 ### SEO
 
-`config/site.ts` holds shared site metadata (name, url, description, social links) consumed by `app/layout.tsx` for the root `Metadata` (OpenGraph/Twitter/JSON-LD for `Organization` and `WebSite`) and per-page metadata overrides (e.g. `app/page.tsx`, `app/privacy/page.tsx`). `next-sitemap.config.js` generates `sitemap.xml`/`robots.txt` into `./out` as a `postbuild` step; keep its `exclude` list (currently `/api/*`, `/admin/*`) in sync with real routes under `app/`.
+`config/site.ts` holds shared site metadata (name, url, description, social links) consumed by `app/layout.tsx` for the root `Metadata` (OpenGraph/Twitter/JSON-LD for `Organization` and `WebSite`) and per-page metadata overrides (`app/page.tsx`). The privacy policy lives in the docs (`siteConfig.links.privacy`), not on this site. `next-sitemap.config.js` generates `sitemap.xml`/`robots.txt` into `./out` as a `postbuild` step; keep its `exclude` list (currently `/api/*`, `/admin/*`) in sync with real routes under `app/`.
 
 ### Lint config duplication
 

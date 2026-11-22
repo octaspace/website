@@ -15,7 +15,7 @@ const columns = [
   {
     title: "Product",
     links: [
-      { text: "OctaRender", href: links.render },
+      { text: "OctaRender", href: consoleLinks.render },
       { text: "Marketplace", href: consoleLinks.compute },
       { text: "OctaSpace Console", href: consoleLinks.home },
       { text: "Documentation", href: links.docs },
@@ -24,7 +24,7 @@ const columns = [
   {
     title: "Company",
     links: [
-      { text: "Privacy Policy", href: "/privacy" },
+      { text: "Privacy Policy", href: links.privacy },
       { text: "Blog", href: links.blog },
       { text: "Contact", href: links.email },
       { text: "Support", href: links.support },

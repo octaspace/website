@@ -76,7 +76,7 @@ npm run lint
 ## Структура проекта
 
 ```text
-app/                    # Страницы (App Router): главная, privacy и т.д.
+app/                    # Страницы (App Router): главная
 components/
   sections/             # Секции лендинга по категориям (hero, feature, pricing, navbar, footer, ...)
   ui/                    # Переиспользуемые примитивы (Section, Mockup, Navbar, PricingColumn и др.)

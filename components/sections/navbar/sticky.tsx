@@ -16,7 +16,7 @@ const name = "OctaSpace";
 const mobileLinks = [
   { text: "Get Started", href: siteConfig.console.compute },
   { text: "Documentation", href: siteConfig.links.docs },
-  { text: "OctaRender", href: siteConfig.links.render },
+  { text: "OctaRender", href: siteConfig.console.render },
   { text: "OctaSpace Console", href: siteConfig.console.home },
 ];
 
